@@ -1,0 +1,22 @@
+
+p{
+    margin: 0;
+}
+
+.texthome{
+    max-width: 70%;
+    margin-left: 20%;
+
+}
+
+.celdas{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 80%;
+}
+
+.menu{
+    max-width: 20%;
+    float:left;
+}
+

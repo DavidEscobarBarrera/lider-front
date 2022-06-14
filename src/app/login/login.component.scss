@@ -1,0 +1,79 @@
+h1, h2 {
+  color: #C2382F;
+  font-family: 'Handel Gothic D', sans-serif;
+}
+
+span, ::placeholder  {
+  color: #7F7F91;
+}
+
+svg {
+  cursor: pointer;
+}
+
+.btn {
+  background-color: #C2382F;
+}
+
+.btn:hover {
+  background-color: #d0352a;
+}
+
+.simple {
+  width: 17.438rem;
+}
+
+.first {
+  background-color: #C2382F;
+  max-height: 50vh;
+}
+
+.second{
+  margin: 2rem 0 ;
+}
+
+@media(min-width:500px){
+  .second{
+    margin: 0;
+  }
+}
+
+@media (min-width: 991.98px) {
+  h1 {
+    font-size: 3.375rem;
+  }
+
+  span {
+    cursor: pointer;
+  }
+
+  .first {
+    max-height: 100vh;
+    background: url("/../../assets/images/fondo.svg") transparent no-repeat right;
+    background-size: cover;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+  }
+
+  .images {
+    margin-top: 25%;
+    margin-left: 10%;
+  }
+}
+
+@media (min-width: 1300px) {
+  .images {
+    margin-top: 15%;
+  }
+
+  .logo {
+    width: 375px;
+    height: 375px;
+  }
+
+  .simple {
+    width: 375px;
+  }
+}
+
+
