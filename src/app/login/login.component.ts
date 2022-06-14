@@ -1,0 +1,54 @@
+import {Component, ViewChild} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms'
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {AuthService} from '../services/auth.service';
+import {Router} from '@angular/router';
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
+})
+export class LoginComponent {
+  inSubmission = false
+  @ViewChild('content', {static: false}) private content: any
+
+  email = new FormControl('', [Validators.required])
+
+  password = new FormControl('', [Validators.required])
+
+  typeAuth = new FormControl('L')
+
+  loginForm = new FormGroup(
+    {
+      userName: this.email,
+      password: this.password,
+      typeAuth: this.typeAuth
+    }
+  )
+
+  constructor(private modalService: NgbModal, private authService: AuthService, private router: Router) {}
+
+  open(content: any) {
+    this.modalService.open(content, {centered: true, size: 'lg'});
+  }
+
+  login() {
+    if (this.loginForm.invalid) {
+      return;
+    }
+    this.inSubmission = true
+    this.authService.login(this.loginForm.value)
+      .subscribe({
+        next: response => {
+          localStorage.setItem('token', JSON.stringify(response.response))
+          this.router.navigateByUrl('/')
+        },
+        error: () => {
+          this.open(this.content)
+          this.inSubmission = false
+        }
+      }
+    )
+  }
+}

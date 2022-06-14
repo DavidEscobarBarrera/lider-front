@@ -1,0 +1,10 @@
+<input [formControl]="control" [type]="type" [placeholder]="placeholder" [autocomplete]="autocomplete"
+       class="form-control border-2" [ngClass]="{'is-invalid': control.errors && control.touched && control.dirty}">
+<ng-container *ngIf="control.touched && control.dirty">
+  <div *ngIf="control.errors?.['required']" class="invalid-feedback">
+    Este campo es requerido
+  </div>
+  <div *ngIf="control.errors?.['pattern']" class="invalid-feedback">
+    Ingresa con tu correo SETI
+  </div>
+</ng-container>

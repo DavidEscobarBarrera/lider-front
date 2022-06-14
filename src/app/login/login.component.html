@@ -1,0 +1,52 @@
+<div class="container-fluid">
+  <div class="row min-vh-100">
+    <div class="col-lg-6 p-0 d-flex justify-content-center align-items-center first">
+      <div class="d-flex flex-column images">
+        <img class="logo img-fluid" src="assets/images/logo.png" alt="logo" width="279" height="273">
+        <img class="simple img-fluid" src="../../assets/images/simple.png" width="456" height="86"
+             alt="La capacidad de hacerlo simple">
+      </div>
+    </div>
+    <div class="col-lg-6 p-0 d-flex flex-column justify-content-center align-items-center second">
+      <h1 class="mb-4">LíderApp</h1>
+      <div class="w-50 mb-5">
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+          <div class="mb-3">
+            <label for="user" class="form-label">Usuario</label>
+            <app-input [control]="email" type="email" autocomplete="off" placeholder="usuario@seti.com.co"
+                       id="user"></app-input>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Contraseña</label>
+            <app-input [control]="password" autocomplete="off" type="password" id="password"></app-input>
+          </div>
+          <div class="d-grid gap-2">
+            <button  class="btn btn-danger" [disabled]="loginForm.invalid || inSubmission">Entrar</button>
+          </div>
+        </form>
+      </div>
+      <div class="d-flex align-items-center gap-3 margin" placement="bottom"
+           ngbTooltip="Recuerda que tu contraseña es la misma del directorio activo,
+           si la olvidaste contacta a Recursos Físicos.">
+        <span>Olvide mi contraseña</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="#C2382F"
+             class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+          <path
+            d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+        </svg>
+      </div>
+    </div>
+    <ng-template #content let-modal>
+      <div class="modal-header">
+        <h2 class="modal-title">Usted no esta autorizado para usar este servicio</h2>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal['dismiss']('Cross click')"></button>
+      </div>
+      <div class="modal-body">
+        <p>Por favor póngase en contacto con el administrador de aplicación LíderApp y, solicite su acceso.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="modal.close('Close click')">Cerrar</button>
+      </div>
+    </ng-template>
+  </div>
+</div>
