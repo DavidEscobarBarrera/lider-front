@@ -27,13 +27,13 @@ steps:
       CleanTargetFolder: true
       overWrite: true
 
-    - task: ArchiveFiles@2
-      displayName: 'Compress build'
-      inputs:
-        rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/dist/$(ApplicationName)'
-        archiveType: zip
-        archiveFile: '$(Build.StagingDirectory)/artifactory/$(ApplicationName).zip'
-      condition: and(succeeded(), or(contains( variables['Build.SourceBranch'],'refs/heads/master' ),contains(variables['Build.SourceBranch'],'refs/heads/release' ),contains( variables['Build.SourceBranch'],'refs/heads/develop' ),contains( variables['Build.SourceBranch'],'refs/heads/trunk' ) ))
+  - task: ArchiveFiles@2
+    displayName: 'Compress build'
+    inputs:
+      rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/dist/$(ApplicationName)'
+      archiveType: zip
+      archiveFile: '$(Build.StagingDirectory)/artifactory/$(ApplicationName).zip'
+    condition: and(succeeded(), or(contains( variables['Build.SourceBranch'],'refs/heads/master' ),contains(variables['Build.SourceBranch'],'refs/heads/release' ),contains( variables['Build.SourceBranch'],'refs/heads/develop' ),contains( variables['Build.SourceBranch'],'refs/heads/trunk' ) ))
   
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: artifact'
