@@ -1,0 +1,25 @@
+name: $(Build.SourceBranchName).$(date:yyyyMMdd)$(rev:.r)
+
+variables:
+  - template: pipelines/vars.yml
+
+trigger:
+  branches:
+   include:
+   - master
+   - develop
+   - release
+   - feature/*
+
+resources:
+- repo: self
+  clean: true
+  fetchDepth: 1
+queue:
+  name: Build
+  demands: 
+  - npm
+
+steps:
+- ${{ if  eq(variables['Build.SourceBranch'], 'refs/heads/develop') }}:
+  - template: pipelines/build.yml
