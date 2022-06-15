@@ -1,7 +1,8 @@
 name: $(Build.SourceBranchName).$(date:yyyyMMdd)$(rev:.r)
 
-variables:
-  - template: pipelines/vars.yml
+resources:
+  - repo: self
+    
 
 trigger:
   branches:
@@ -11,10 +12,9 @@ trigger:
    - release
    - feature/*
 
-resources:
-- repo: self
-  clean: true
-  fetchDepth: 1
+variables:
+  - template: pipelines/vars.yml
+
 queue:
   name: Build
   demands: 
