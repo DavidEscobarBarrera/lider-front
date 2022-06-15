@@ -11,17 +11,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 import { ConstructionComponent } from './construction/construction.component';
-import { SeguimientoBancoComponent } from './seguimiento-banco/seguimiento-banco.component';
-import { RegistrarAccionMejoraComponent } from './registrar-accion-mejora/registrar-accion-mejora.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    ConstructionComponent,
-    SeguimientoBancoComponent,
-    RegistrarAccionMejoraComponent
+    ConstructionComponent
   ],
   imports: [
     BrowserModule,
