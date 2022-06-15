@@ -13,22 +13,21 @@
         <form [formGroup]="loginForm" (ngSubmit)="login()">
           <div class="mb-3">
             <label for="user" class="form-label">Usuario</label>
-            <app-input [control]="email" type="email" autocomplete="off" placeholder="usuario@seti.com.co"
-                       id="user"></app-input>
+            <app-input [control]="email" type="email" autocomplete="off" id="user"></app-input>
           </div>
           <div class="mb-3">
             <label for="password" class="form-label">Contraseña</label>
             <app-input [control]="password" autocomplete="off" type="password" id="password"></app-input>
           </div>
           <div class="d-grid gap-2">
-            <button  class="btn btn-danger" [disabled]="loginForm.invalid || inSubmission">Entrar</button>
+            <button class="btn btn-danger" [disabled]="loginForm.invalid || inSubmission">Entrar</button>
           </div>
         </form>
       </div>
       <div class="d-flex align-items-center gap-3 margin" placement="bottom"
            ngbTooltip="Recuerda que tu contraseña es la misma del directorio activo,
            si la olvidaste contacta a Recursos Físicos.">
-        <span>Olvide mi contraseña</span>
+        <span>Olvidé mi contraseña</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="#C2382F"
              class="bi bi-info-circle-fill" viewBox="0 0 16 16">
           <path
