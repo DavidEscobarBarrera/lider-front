@@ -21,5 +21,4 @@ queue:
   - npm
 
 steps:
-- ${{ if  eq(variables['Build.SourceBranch'], 'refs/heads/develop') }}:
   - template: pipelines/build.yml
