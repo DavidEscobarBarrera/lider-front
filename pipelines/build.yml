@@ -6,22 +6,39 @@ steps:
       workingDir: "$(System.DefaultWorkingDirectory)"
       verbose: false
 
-  - task: Npm@1
-    displayName: "Build"
+  - ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/develop') }}:
+    - task: Npm@1
+      displayName: "Build"
+      inputs:
+        command: custom
+        workingDir: "$(System.DefaultWorkingDirectory)"
+        verbose: false
+        customCommand: run build
+  
+  - task: CopyFiles@2
+    displayName: 'Copy Files'
     inputs:
-      command: custom
-      workingDir: "$(System.DefaultWorkingDirectory)"
-      verbose: false
-      customCommand: run build
+      SourceFolder: '$(System.DefaultWorkingDirectory)'
+      Contents: |
+        dist/**/*
+        AcceptanceTest/**/*
+        PerformanceTest/**/*
+      TargetFolder: '$(Build.ArtifactStagingDirectory)'
+      CleanTargetFolder: true
+      overWrite: true
 
-  - task: ArchiveFiles@2
-    displayName: 'Archive $(Build.BinariesDirectory)'
-    inputs:
-      archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildNumber)/$(ApplicationName).zip'
+    - task: ArchiveFiles@2
+      displayName: 'Compress build'
+      inputs:
+        rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/dist/$(ApplicationName)'
+        archiveType: zip
+        archiveFile: '$(Build.StagingDirectory)/artifactory/$(ApplicationName).zip'
+      condition: and(succeeded(), or(contains( variables['Build.SourceBranch'],'refs/heads/master' ),contains(variables['Build.SourceBranch'],'refs/heads/release' ),contains( variables['Build.SourceBranch'],'refs/heads/develop' ),contains( variables['Build.SourceBranch'],'refs/heads/trunk' ) ))
   
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: artifact'
     inputs:
-      ArtifactName: artifact
+      ArtifactName: Artifact
+    condition: and(succeeded(), or(contains( variables['Build.SourceBranch'],'refs/heads/master' ),contains(variables['Build.SourceBranch'],'refs/heads/release' ),contains( variables['Build.SourceBranch'],'refs/heads/develop' ),contains( variables['Build.SourceBranch'],'refs/heads/trunk' ) ))
 
 
