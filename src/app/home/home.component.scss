@@ -1,22 +1,48 @@
-
-p{
-    margin: 0;
+.content:last-child {
+  margin-bottom: 3rem;
 }
 
-.texthome{
-    max-width: 70%;
-    margin-left: 20%;
-
+.cursor {
+  cursor: pointer;
 }
 
-.celdas{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    width: 80%;
+@media(min-width: 990px) {
+  p {
+    font-size: 20px;
+  }
+
+  .direction {
+    flex-direction: row !important;
+  }
+
+  .description {
+    margin-bottom: 5rem !important;
+    display: flex;
+    justify-content: center;
+  }
+
+  .content {
+    gap: 12rem !important;
+  }
+
+  .content:last-child {
+    margin-bottom: 0;
+  }
 }
 
-.menu{
-    max-width: 20%;
-    float:left;
+@media(min-width: 1200px) {
+  p {
+    width: 70%;
+    font-size: 22px;
+  }
+
+  img {
+    width: 125px;
+    height: 125px;
+  }
+
+  .description {
+    margin-bottom: 8rem !important;
+  }
 }
 

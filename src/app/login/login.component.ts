@@ -21,9 +21,9 @@ export class LoginComponent {
 
   loginForm = new FormGroup(
     {
-      userName: this.email,
-      password: this.password,
-      typeAuth: this.typeAuth
+      pusua_nombreusuario: this.email,
+      pusua_contrasena: this.password,
+      pusua_tipoacceso: this.typeAuth
     }
   )
 

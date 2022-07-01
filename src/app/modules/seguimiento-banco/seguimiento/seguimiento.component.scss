@@ -1,0 +1,22 @@
+.red {
+  color: #C2382F;
+}
+
+img, h2 {
+  cursor: pointer;
+}
+
+p {
+  max-width: 70%;
+}
+
+@media(min-width: 990px) {
+  img {
+    width: 9.375rem;
+    height: 9.375rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+  }
+}

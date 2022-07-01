@@ -13,8 +13,7 @@
         <form [formGroup]="loginForm" (ngSubmit)="login()">
           <div class="mb-3">
             <label for="user" class="form-label">Usuario</label>
-            <app-input [control]="email" type="email" autocomplete="off" placeholder="usuario@seti.com.co"
-                       id="user"></app-input>
+            <app-input [control]="email" type="email" autocomplete="off" id="user"></app-input>
           </div>
           <div class="mb-3">
             <label for="password" class="form-label">Contraseña</label>

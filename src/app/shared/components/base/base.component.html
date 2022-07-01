@@ -1,0 +1,59 @@
+<mat-toolbar class="example-header">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+  </button>
+  <div class="d-flex cursor app-name" routerLink="/">
+    <img class="logo img-fluid" src="assets/images/logo.png" alt="Logo" width="279" height="273">
+    <span class="fs-2 align-self-center">LíderApp</span>
+  </div>
+  <button (click)="logout()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon aria-hidden="false">logout</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="over" class="sidenav">
+    <div class="h-25 d-flex leader-info">
+      <div class="w-100 d-flex justify-content-center align-items-center">
+        <img class="photo" src="assets/images/perfil.png" alt="Líder">
+      </div>
+      <div *ngIf="leaderInfo$ | async as leaderInfo" class="w-100 d-flex justify-content-center  flex-column">
+        <p class="welcome fw-bold">Bienvenido</p>
+        <p class="name">{{leaderInfo.name}}</p>
+        <p class="position">{{leaderInfo.position}}</p>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center mt-3">
+      <button routerLink="/" mat-fab color="warn" aria-label="Example icon button with a home icon">
+        <mat-icon>home</mat-icon>
+      </button>
+    </div>
+    <div class="d-flex justify-content-center mt-4">
+      <button [matMenuTriggerFor]="seguimiento" class="d-inline-block w-75" mat-raised-button color="warn">
+        Seguimiento
+      </button>
+      <mat-menu #seguimiento="matMenu">
+        <button routerLink="/seguimiento-banco" mat-menu-item>Banco</button>
+        <button mat-menu-item>Talentos</button>
+      </mat-menu>
+    </div>
+    <div class="d-flex justify-content-center mt-2">
+      <button [matMenuTriggerFor]="admin" class="d-inline-block w-75" mat-raised-button color="warn">
+        Administración
+      </button>
+      <mat-menu #admin="matMenu">
+        <button mat-menu-item>Líder Banco</button>
+        <button mat-menu-item>Líder SETI</button>
+      </mat-menu>
+    </div>
+    <div class="d-flex justify-content-center mt-2">
+      <button class="d-inline-block w-75" mat-raised-button color="warn">Reportes</button>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<mat-toolbar class="example-footer d-flex justify-content-center">
+  <img class="img-fluid" src="assets/images/simple.png" alt="La capacidad de hacerlo simple" width="456" height="86">
+</mat-toolbar>
+
