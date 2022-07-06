@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {AuthService} from '../../../services/auth.service';
-import {LeaderSetiInfoService} from '../../../services/leader-seti-info.service';
 import {map} from 'rxjs';
+import {SetiLeaderInfoService} from '../../../services/seti-leader-info.service';
 
 @Component({
   selector: 'app-base',
@@ -10,13 +10,13 @@ import {map} from 'rxjs';
 })
 export class BaseComponent {
 
-  constructor(private authService: AuthService, private leaderInfoService: LeaderSetiInfoService) {}
+  constructor(private authService: AuthService, private leaderInfoService: SetiLeaderInfoService) {}
 
   leaderInfo$ = this.leaderInfoService.getLeaderSetiInfo()
     .pipe(
       map(data => ({
-        name: data.name,
-        position: data.position
+        name: data.nombre,
+        position: data.plise_cargo
       }))
     )
 

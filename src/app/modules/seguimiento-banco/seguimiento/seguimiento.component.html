@@ -5,13 +5,29 @@
       <div class="row h-100">
         <div class="col-lg-6 d-flex justify-content-center align-items-center flex-column">
           <div class="mb-4">
-            <img routerLink="/lider" class="img-fluid" src="assets/images/Líder.svg" alt="Líder"
-                 width="102" height="115">
+            <img class="img-fluid" src="assets/images/Líder.svg" alt="Líder" width="102" height="115">
           </div>
-          <h2 routerLink="/lider" class="red mb-3">Líder</h2>
+          <h2 class="red mb-3">Líder</h2>
           <p class="text-center mb-4">Se listarán los talentos asociados al líder seleccionado para el seguimiento</p>
         </div>
         <div class="col-lg-6 d-flex justify-content-center align-items-center flex-column">
+          <div>
+            <form>
+              <mat-form-field appearance="outline">
+                <mat-label>
+                  <mat-icon>search</mat-icon>
+                </mat-label>
+                <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl"
+                       [matAutocomplete]="auto">
+                <mat-autocomplete (optionSelected)="selectLeader($event.option.value)" [displayWith]="displayFn"
+                                  #auto="matAutocomplete">
+                  <mat-option *ngFor="let option of filteredOptions | async" [value]="option.plide_id">
+                    {{option.nombre}}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+            </form>
+          </div>
           <div class="mb-4">
             <img class="img-fluid" src="assets/images/Talento.svg" alt="Talento" width="114" height="114">
           </div>

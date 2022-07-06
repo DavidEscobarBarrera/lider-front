@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {LeaderSetiInfoService} from '../services/leader-seti-info.service';
 import {map} from 'rxjs';
+import {SetiLeaderInfoService} from '../services/seti-leader-info.service';
 
 @Component({
   selector: 'app-home',
@@ -9,13 +9,12 @@ import {map} from 'rxjs';
 })
 export class HomeComponent {
 
-  constructor(private leaderInfoService: LeaderSetiInfoService) {
-  }
+  constructor(private leaderInfoService: SetiLeaderInfoService) {}
 
   client$ = this.leaderInfoService.getLeaderSetiInfo()
     .pipe(
       map(data => ({
-        client: data.client
+        client: data.pclie_nombre
         })
       )
     )

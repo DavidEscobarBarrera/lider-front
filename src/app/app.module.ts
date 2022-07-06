@@ -11,13 +11,6 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {HttpClientModule} from '@angular/common/http';
 import {JWT_OPTIONS, JwtHelperService} from '@auth0/angular-jwt';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatInputModule} from '@angular/material/input';
-import {MatNativeDateModule, MatOptionModule} from '@angular/material/core';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {MatSelectModule} from '@angular/material/select';
-import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -32,15 +25,7 @@ import {MatTableModule} from '@angular/material/table';
     SharedModule,
     NgbModule,
     HttpClientModule,
-    BrowserAnimationsModule,
-    MatFormFieldModule,
-    MatDatepickerModule,
-    MatInputModule,
-    MatNativeDateModule,
-    MatOptionModule,
-    MatAutocompleteModule,
-    MatSelectModule,
-    MatTableModule
+    BrowserAnimationsModule
   ],
   providers: [
     {provide: JWT_OPTIONS, useValue: JWT_OPTIONS},
