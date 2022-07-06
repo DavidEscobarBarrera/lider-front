@@ -11,12 +11,16 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {HttpClientModule} from '@angular/common/http';
 import {JWT_OPTIONS, JwtHelperService} from '@auth0/angular-jwt';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { UnderConstructionComponent } from './under-construction/under-construction.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    UnderConstructionComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
