@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {ClientLeaderResponse} from '../models/leader';
+import {ClientLeaderInfoResponse, ClientLeaderResponse, TalentResponse} from '../models/leader';
 import {map} from 'rxjs';
 
 @Injectable({
@@ -16,5 +16,17 @@ export class ClientLeaderService {
       .pipe(
         map(res => res.data)
       )
+  }
+
+  getTalents(icId: string, clId:string) {
+    return this.http.get<TalentResponse>(`http://localhost:3003/v1/gettalentclientbyid/${icId}/${clId}`)
+      .pipe(map(value => value.data))
+  }
+
+  getClientLeaderInfo(id: string) {
+    return this.http.get<ClientLeaderInfoResponse>(`http://localhost:3003/v1/getoneleaderclientbyid/${id}`)
+      .pipe(map(value => ({
+        name: value.data[0].nombre
+      })))
   }
 }

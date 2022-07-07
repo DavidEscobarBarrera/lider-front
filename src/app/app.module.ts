@@ -11,8 +11,16 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {HttpClientModule} from '@angular/common/http';
 import {JWT_OPTIONS, JwtHelperService} from '@auth0/angular-jwt';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { UnderConstructionComponent } from './under-construction/under-construction.component';
-import { NotFoundComponent } from './not-found/not-found.component';
+import {UnderConstructionComponent} from './under-construction/under-construction.component';
+import {NotFoundComponent} from './not-found/not-found.component';
+import {RegistrarAccionMejoraComponent} from './registrar-accion-mejora/registrar-accion-mejora.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatOptionModule, MatNativeDateModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatButtonModule} from "@angular/material/button";
+import {MatInputModule} from '@angular/material/input';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +28,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     HomeComponent,
     LoginComponent,
     UnderConstructionComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    RegistrarAccionMejoraComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +38,14 @@ import { NotFoundComponent } from './not-found/not-found.component';
     SharedModule,
     NgbModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatButtonModule,
+    MatNativeDateModule,
+    MatInputModule
   ],
   providers: [
     {provide: JWT_OPTIONS, useValue: JWT_OPTIONS},

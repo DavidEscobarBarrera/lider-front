@@ -10,6 +10,8 @@ import {MatInputModule} from '@angular/material/input';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatIconModule} from '@angular/material/icon';
+import {MatTableModule} from "@angular/material/table";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import {MatIconModule} from '@angular/material/icon';
     MatInputModule,
     ReactiveFormsModule,
     MatAutocompleteModule,
-    MatIconModule
+    MatIconModule,
+    MatTableModule,
+    MatButtonModule
   ]
 })
 export class SeguimientoBancoModule {

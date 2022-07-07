@@ -4,6 +4,8 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { LoginGuard } from './guards/login.guard';
+import {RegistrarAccionMejoraComponent} from "./registrar-accion-mejora/registrar-accion-mejora.component";
+import {UnderConstructionComponent} from "./under-construction/under-construction.component";
 
 const routes: Routes = [
   {
@@ -15,6 +17,14 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent,
     canActivate: [LoginGuard]
+  },
+  {
+    path: 'registrar-accion-mejora',
+    component: RegistrarAccionMejoraComponent
+  },
+  {
+    path: 'under-construction',
+    component: UnderConstructionComponent
   },
   {
     path: 'seguimiento-banco',
