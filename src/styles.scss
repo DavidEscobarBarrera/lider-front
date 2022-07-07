@@ -2,16 +2,20 @@
 @import "~bootstrap/scss/bootstrap";
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 @import url('http://fonts.cdnfonts.com/css/handel-gothic-d');
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
 
 body {
   font-family: 'Montserrat', sans-serif;
 }
 
-.tooltip-inner{
+.tooltip-inner {
   background-color: #FFF2CC;
   color:black;
   border: black 2px solid;
 }
 
+.cursor {
+  cursor: pointer;
+}
 
 

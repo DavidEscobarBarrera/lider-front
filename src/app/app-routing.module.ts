@@ -4,7 +4,8 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { LoginGuard } from './guards/login.guard';
-import { ConstructionComponent } from './construction/construction.component';
+import {RegistrarAccionMejoraComponent} from "./registrar-accion-mejora/registrar-accion-mejora.component";
+import {UnderConstructionComponent} from "./under-construction/under-construction.component";
 
 const routes: Routes = [
   {
@@ -18,8 +19,17 @@ const routes: Routes = [
     canActivate: [LoginGuard]
   },
   {
-    path: 'construction',
-    component: ConstructionComponent
+    path: 'registrar-accion-mejora',
+    component: RegistrarAccionMejoraComponent
+  },
+  {
+    path: 'under-construction',
+    component: UnderConstructionComponent
+  },
+  {
+    path: 'seguimiento-banco',
+    loadChildren: () => import('./modules/seguimiento-banco/seguimiento-banco.module')
+      .then(m => m.SeguimientoBancoModule)
   }
 ];
 

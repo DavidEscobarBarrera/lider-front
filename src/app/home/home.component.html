@@ -1,65 +1,26 @@
-<body>
-
-    <app-header></app-header>
-
-    <div>
-        <div class="menu" >
-            <app-menu></app-menu>
-        </div>
-
-
-        <div class="container texthome text-center" >
-            <div class="content2">
-                <div>
-                    <h4><b><br>Bienvenidos a LíderApp.<br></b></h4>
-                    <p>Desde acá podrá realizar la gestión del segimiento de los talentos asignados al</p>
-                    <p>cliente <b><i>BANCOLOMBIA BANITSMO</i></b> y explorar distintas categorías.</p><br>
-                </div><br><br>
-                <div class="container celdas">
-                    <div class="container text-center">
-                        <a class=" align-items-center" href="#" >
-                          <img
-                            src="../../assets/images/image (6).png"
-                            height="100"
-                            width="100"
-                            alt="MDB Logo"
-                            loading="lazy"
-                          />
-                        </a><br><br>
-                        <p>Seguimiento <br> Talentos</p>
-                      </div>
-                      <div class="container text-center">
-                        <a class=" align-items-center" href="#" >
-                          <img
-                            src="../../assets/images/image (4).png"
-                            height="100"
-                            width="100"
-                            alt="MDB Logo"
-                            loading="lazy"
-                          />
-                        </a><br><br>
-                        <p>Seguimiento <br> Banco</p>
-                      </div>
-                      <div class="container text-center">
-                        <a class=" align-items-center" href="#" >
-                          <img
-                            src="../../assets/images/image (5).png"
-                            height="100"
-                            width="100"
-                            alt="MDB Logo"
-                            loading="lazy"
-                          />
-                        </a><br><br>
-                        <p>Crear líder <br> Banco</p>
-                      </div>
-                </div>
-            </div>
-
-        </div>
-
+<app-base>
+  <h1 class="text-center mt-5">Bienvenidos a LíderApp.</h1>
+  <div class="container mb-5 description">
+    <p class="text-center">
+      Desde acá podrá realizar la gestión del seguimiento de los talentos asignados al cliente
+      <span class="fw-bold">{{(client$ | async)?.client}}</span> y explorar las distintas categorías.
+    </p>
+  </div>
+  <div class="d-flex justify-content-center align-items-center flex-column gap-5 direction content">
+    <div class="d-flex justify-content-center align-items-center flex-column">
+      <img routerLink="/under-construction" class="cursor" src="assets/images/seguimientoTalento.png"
+           alt="Seguimiento Talento">
+      <h2 class="text-center mt-3 fs-4">Seguimiento <br> Talentos</h2>
     </div>
-
-</body>
-
-
-<app-footer></app-footer>
+    <div class="d-flex justify-content-center align-items-center flex-column">
+      <img routerLink="/seguimiento-banco" class="cursor" src="assets/images/seguimientoBanco.png"
+           alt="Seguimiento Banco">
+      <h2 class="text-center mt-3 fs-4">Seguimiento <br> Banco</h2>
+    </div>
+    <div class="d-flex justify-content-center align-items-center flex-column">
+      <img routerLink="/under-construction" class="cursor" src="assets/images/crearLíderBanco.png"
+           alt="Crear Líder Banco">
+      <h2 class="text-center mt-3 fs-4">Crear Líder <br> Banco</h2>
+    </div>
+  </div>
+</app-base>

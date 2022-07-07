@@ -116,3 +116,17 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+/.idea/sonarlint/issuestore/0/2/02c004b4329a0d99c45abb61a30dadfde61ecf5d
+/.idea/sonarlint/issuestore/8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+/.idea/sonarlint/issuestore/3/2/32a53d37513cda56e54c64c42e8ba0abeaab7882
+/.idea/sonarlint/issuestore/8/4/849c9586492534c12e74205bf54d4e2e14f2ce29
+/.idea/sonarlint/issuestore/0/6/06895b2dfff011115a8eded7e3fad29788965566
+/.idea/.gitignore
+/.idea/watcherTasks.xml
+/.idea/modules.xml
+/.idea/vcs.xml
+/.idea/liderapp-frontend.iml
+/.idea/sonarlint/issuestore/index.pb
+/.idea/sonarlint/issuestore/c/4/c4f4d25464610a1d7fb02827cd468a5f53cdcc0e
+/.idea/aws.xml
+.idea/

@@ -1,0 +1,95 @@
+p {
+  margin: 0;
+  color: white;
+}
+
+span {
+  font-family: 'Handel Gothic D', sans-serif;
+}
+
+.example-container {
+  position: absolute;
+  top: 3.75rem;
+  bottom: 3.75rem;
+  left: 0;
+  right: 0;
+}
+
+.sidenav {
+  width: 25%;
+}
+
+.example-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: #C2382F;
+  color: white;
+  justify-content: space-between;
+}
+
+.example-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: #C2382F;
+}
+
+.app-name {
+  visibility: hidden;
+}
+
+.logo {
+  height: 50px;
+  width: 50px;
+}
+
+.leader-info {
+  background-color: #C2382F;
+}
+
+.photo {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.welcome {
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+.name, .position {
+  font-size: .75rem;
+}
+
+::ng-deep .mat-drawer-backdrop.mat-drawer-shown {
+  background-color: rgba(176, 170, 170, 0.44);
+}
+
+@media(min-width: 600px) {
+  .app-name {
+    visibility: visible;
+  }
+
+}
+
+@media(max-width: 600px) {
+  .sidenav {
+    width: 80% !important;
+  }
+
+}
+
+@media(max-width: 1000px) {
+  .sidenav {
+    width: 40%;
+  }
+}
+
+

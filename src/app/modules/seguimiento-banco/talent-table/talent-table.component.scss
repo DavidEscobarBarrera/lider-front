@@ -1,0 +1,25 @@
+table {
+  width: 70%;
+}
+
+.colors {
+  width: 20px;
+}
+
+td.mat-cell, th.mat-header-cell {
+  border: none;
+}
+
+.blue {
+  color: #0071C5;
+  cursor: pointer;
+}
+
+.right {
+  text-align: right;
+  margin-right: 10px;
+}
+
+.left, th.cdk-column-nombre {
+  padding-left: 1rem;
+}

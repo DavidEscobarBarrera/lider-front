@@ -1,0 +1,49 @@
+<app-base>
+  <p class="text-danger mt-2 mb-0 right">Líder {{(name | async)?.name}}</p>
+  <div class="d-flex align-items-center min-vh-100 gh flex-column">
+    <h1 class="mb-4 mt-4 text-center text-danger">Seguimiento Banco por líder</h1>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" aria-describedby="Table">
+      <ng-container matColumnDef="color">
+        <th class="colors" mat-header-cell *matHeaderCellDef></th>
+        <td [ngStyle]="{'background-color': element.psegu_color == 'R' ? 'red' : 'white'}"
+            mat-cell *matCellDef="let element"></td>
+      </ng-container>
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef> Nombre</th>
+        <td mat-cell class="left" *matCellDef="let element">
+          <span routerLink="/under-construction" class="blue">{{element.nombre}}</span>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="documento">
+        <th mat-header-cell *matHeaderCellDef> Documento</th>
+        <td mat-cell *matCellDef="let element">{{element.ptale_documentoidentidad}} </td>
+      </ng-container>
+      <ng-container matColumnDef="satisfacción">
+        <th mat-header-cell *matHeaderCellDef> Satisfacción</th>
+        <td mat-cell *matCellDef="let element">
+          {{element.psegu_tiposatisfaccion === null ? 'Sin evaluación' : element.psegu_tiposatisfaccion}}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="desempeño">
+        <th mat-header-cell *matHeaderCellDef> Desempeño</th>
+        <td mat-cell *matCellDef="let element">
+          {{element.psegu_calificaciondesempeno === null ? 'Sin evaluación' : element.psegu_calificaciondesempeno}}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="ultimo seguimiento">
+        <th mat-header-cell *matHeaderCellDef> Ultimo seguimiento</th>
+        <td mat-cell *matCellDef="let element">
+          <span
+            routerLink="/under-construction"
+            class="blue">{{element.psegu_fecha === null ? 'Sin evaluación' : element.psegu_fecha}}
+          </span>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <div class="mt-5 mb-5">
+      <button routerLink="/seguimiento-banco" mat-raised-button>Regresar</button>
+    </div>
+  </div>
+</app-base>
