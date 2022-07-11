@@ -12,11 +12,13 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from "@angular/material/table";
 import {MatButtonModule} from "@angular/material/button";
+import {SeguimientoBancoTalentoComponent} from './seguimiento-banco-talento/seguimiento-banco-talento.component';
 
 @NgModule({
   declarations: [
     SeguimientoComponent,
-    TalentTableComponent
+    TalentTableComponent,
+    SeguimientoBancoTalentoComponent
   ],
   imports: [
     CommonModule,
