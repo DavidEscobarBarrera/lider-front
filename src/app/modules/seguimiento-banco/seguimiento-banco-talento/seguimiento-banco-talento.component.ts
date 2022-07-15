@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SeguimientoBancoTalentoComponent implements OnInit {
 
+  fecha: Date = new Date;
+
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  
+  
 }
