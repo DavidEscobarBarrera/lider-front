@@ -1,0 +1,76 @@
+h1 {
+    color: #C2382F;
+}
+
+h2 {
+    color: #C2382F;
+}
+
+.fechaA {
+    color: #C2382F;
+}
+
+.lider {
+    color: #C2382F;
+    margin-bottom: 0;
+}
+
+.right {
+    text-align: right;
+    margin-right: 1rem;
+}
+
+.talento {
+    color: #C2382F;
+}
+
+.cc {
+    color: #C2382F;
+}
+
+.cargo {
+    color: #C2382F;
+}
+
+.btnG {
+    background-color: #C2382F;
+    color: white;
+}
+
+.btn {
+    background-color: white;
+    color: black;   
+}
+
+ngb-rating {
+    color:#C2382F;
+    font-size: 33px;
+    padding-left: 0.5rem;
+}
+
+.d-inline-flex {
+    gap: 10px;
+}
+
+.calificacion {
+    text-align: left;
+    margin: 0;
+}
+.star{
+    text-align: left;
+}
+
+@media (min-width: 1000px) {
+    .estrella {
+        display: flex;
+    }
+
+    .Btn {
+        margin-top: 4.5rem;
+    }
+
+    .star{
+        text-align: center;
+    }
+
+}

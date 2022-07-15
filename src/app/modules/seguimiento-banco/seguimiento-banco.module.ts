@@ -13,6 +13,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from "@angular/material/table";
 import {MatButtonModule} from "@angular/material/button";
 import {SeguimientoBancoTalentoComponent} from './seguimiento-banco-talento/seguimiento-banco-talento.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {SeguimientoBancoTalentoComponent} from './seguimiento-banco-talento/segu
     MatAutocompleteModule,
     MatIconModule,
     MatTableModule,
-    MatButtonModule
+    MatButtonModule,
+    NgbModule
   ]
 })
 export class SeguimientoBancoModule {

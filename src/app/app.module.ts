@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -20,7 +20,9 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from '@angular/material/input';
-
+import localEs from '@angular/common/locales/es';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localEs);
 
 @NgModule({
   declarations: [
@@ -49,7 +51,12 @@ import {MatInputModule} from '@angular/material/input';
   ],
   providers: [
     {provide: JWT_OPTIONS, useValue: JWT_OPTIONS},
-    JwtHelperService
+    JwtHelperService,
+    {
+      provide:LOCALE_ID,
+      useValue:'es'
+    }
+
   ],
   bootstrap: [AppComponent]
 })
