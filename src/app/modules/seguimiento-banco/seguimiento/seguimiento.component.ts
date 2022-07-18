@@ -16,7 +16,8 @@ export class SeguimientoComponent implements OnInit {
   myControl = new FormControl('');
   filteredOptions!: Observable<ClientLeader[]>;
   inClientId!: number;
-  visible = false;
+  visibleLeader = true;
+  visibleTalent = true;
 
   constructor(private clientLeaderService: ClientLeaderService,
               private setiLeaderService: SetiLeaderInfoService,
@@ -46,9 +47,5 @@ export class SeguimientoComponent implements OnInit {
 
   selectLeader(value: any) {
     this.router.navigate(['lider', this.inClientId, value], {relativeTo: this.activatedRoute});
-  }
-
-  show() {
-    this.visible = !this.visible
   }
 }
