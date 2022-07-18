@@ -1,23 +1,27 @@
 <app-base>
-  <div class="h-100 d-flex justify-content-center align-items-center flex-column">
-    <h1 class="mb-4 red text-center">Seguimiento Banco</h1>
-    <div class="w-75 h-75">
-      <div class="row h-100">
-        <div class="col-lg-6 d-flex justify-content-center align-items-center flex-column">
-          <div class="mb-4">
-            <img (click)="show()" class="img-fluid" src="assets/images/Líder.svg" alt="Líder" width="102" height="115">
+  <h1 class="red text-center mt-5 mb-5">Seguimiento Banco</h1>
+  <div class="d-flex align-items-center flex-column">
+    <div class="w-75 grey-border mb-5">
+      <h2 class="text-center mb-3">Deseas buscar por:</h2>
+      <div class="row">
+        <div class="col-lg-6 d-flex">
+          <div *ngIf="visibleTalent; else searchByTalent"
+               class="d-flex justify-content-center align-items-center flex-column">
+            <img (click)="visibleLeader = false" class="img-fluid" src="assets/images/Líder.svg"
+                 alt="Líder" width="102" height="115">
+            <h3 class="red mb-3 mt-4">Líder</h3>
+            <p class="text-center mb-4">Se listarán los talentos asociados al líder seleccionado para el seguimiento</p>
           </div>
-          <h2 class="red mb-3">Líder</h2>
-          <p class="text-center mb-4">Se listarán los talentos asociados al líder seleccionado para el seguimiento</p>
         </div>
-        <div class="col-lg-6 d-flex justify-content-center align-items-center flex-column">
-          <div *ngIf="visible">
-            <form>
-              <mat-form-field appearance="outline">
+        <ng-template #searchByTalent>
+          <div class="w-100 d-flex flex-column justify-content-center">
+            <h3 class="ff text-center red">Buscar por Talento</h3>
+            <form class="d-flex justify-content-center leader-form">
+              <mat-form-field class="w-75" appearance="outline">
                 <mat-label>
                   <mat-icon>search</mat-icon>
                 </mat-label>
-                <input type="text" placeholder="Selecciona un líder" aria-label="Number" matInput
+                <input type="text" placeholder="Selecciona un talento" aria-label="Number" matInput
                        [formControl]="myControl" [matAutocomplete]="auto">
                 <mat-autocomplete (optionSelected)="selectLeader($event.option.value)" [displayWith]="displayFn"
                                   #auto="matAutocomplete">
@@ -27,12 +31,50 @@
                 </mat-autocomplete>
               </mat-form-field>
             </form>
+            <div class="d-flex justify-leader w-75 center">
+              <div (click)="visibleTalent = true" class="d-flex flex-column red-border">
+                <img class="small-icon" src="assets/images/Líder.svg"
+                     alt="Talento" width="102" height="115">
+                <small class="red text-center">Líder</small>
+              </div>
+            </div>
           </div>
-          <div *ngIf="!visible" class="mb-4">
-            <img class="img-fluid" src="assets/images/Talento.svg" alt="Talento" width="114" height="114">
+        </ng-template>
+        <div class="col-lg-6 d-flex">
+          <div *ngIf="visibleLeader; else searchByLeader"
+               class="d-flex justify-content-center align-items-center flex-column">
+            <img (click)="visibleTalent = false" class="img-fluid" src="assets/images/Talento.svg" alt="Talento"
+                 width="114" height="114">
+            <h3 class="red mb-3 mt-4">Talento</h3>
+            <p class="text-center">Se mostrará la pantalla de seguimiento con el talento seleccionado</p>
           </div>
-          <h2 class="red mb-3">Talento</h2>
-          <p class="text-center">Se mostrará la pantalla de seguimiento con el talento seleccionado</p>
+          <ng-template #searchByLeader>
+            <div class="w-100 d-flex flex-column justify-content-center">
+              <h3 class="ff text-center red">Buscar por líder banco</h3>
+              <form class="d-flex justify-content-center leader-form">
+                <mat-form-field class="w-75" appearance="outline">
+                  <mat-label>
+                    <mat-icon>search</mat-icon>
+                  </mat-label>
+                  <input type="text" placeholder="Selecciona un líder" aria-label="Number" matInput
+                         [formControl]="myControl" [matAutocomplete]="auto">
+                  <mat-autocomplete (optionSelected)="selectLeader($event.option.value)" [displayWith]="displayFn"
+                                    #auto="matAutocomplete">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option.plide_id">
+                      {{option.nombre}}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+              </form>
+              <div class="d-flex justify-talent w-75 center">
+                <div (click)="visibleLeader = true" class="d-flex flex-column red-border">
+                  <img class="small-icon" src="assets/images/Talento.svg"
+                       alt="Talento" width="114" height="114">
+                  <small class="red text-center">Talento</small>
+                </div>
+              </div>
+            </div>
+          </ng-template>
         </div>
       </div>
     </div>
