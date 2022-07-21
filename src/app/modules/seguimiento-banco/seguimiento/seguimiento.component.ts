@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {ClientLeader} from '../../../models/leader';
 import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
-import {debounceTime, firstValueFrom, switchMap, Observable} from 'rxjs';
+import {debounceTime, switchMap, Observable} from 'rxjs';
 import {FormControl} from '@angular/forms';
+import {Router, ActivatedRoute} from '@angular/router';
+import {ClientLeader} from '../../../models/leader';
 import {ClientLeaderService} from '../../../services/client-leader.service';
 import {SetiLeaderInfoService} from '../../../services/seti-leader-info.service';
-import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-seguimiento',
@@ -24,15 +24,17 @@ export class SeguimientoComponent implements OnInit {
               private router: Router,
               private activatedRoute: ActivatedRoute) {}
 
-  async ngOnInit() {
-    this.inClientId = await firstValueFrom(this.setiLeaderService.inClientId$);
-    this.filteredOptions = this.myControl.valueChanges
-      .pipe(
-        startWith(''),
-        debounceTime(400),
-        distinctUntilChanged(),
-        switchMap(name => this.filter(name))
-      )
+  ngOnInit() {
+    try {
+      this.inClientId = this.setiLeaderService.userData.plise_id;
+      this.filteredOptions = this.myControl.valueChanges
+        .pipe(
+          startWith(''),
+          debounceTime(400),
+          distinctUntilChanged(),
+          switchMap(name => this.filter(name))
+        )
+    } catch (e) {}
   }
 
   displayFn(user: ClientLeader): string {
