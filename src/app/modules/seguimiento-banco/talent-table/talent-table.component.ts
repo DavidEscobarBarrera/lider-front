@@ -11,6 +11,7 @@ import {Talent} from '../../../models/leader';
 export class TalentTableComponent implements OnInit{
 
   constructor(private activatedRoute: ActivatedRoute, private clientLeaderService: ClientLeaderService) {}
+
   icId = this.activatedRoute.snapshot.params['icId'];
   clId = this.activatedRoute.snapshot.params['clId'];
   name = this.clientLeaderService.getClientLeaderInfo(this.clId);

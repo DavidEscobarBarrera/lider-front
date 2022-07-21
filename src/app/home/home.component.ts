@@ -1,5 +1,4 @@
-import {Component} from '@angular/core';
-import {map} from 'rxjs';
+import {Component, OnInit} from '@angular/core';
 import {SetiLeaderInfoService} from '../services/seti-leader-info.service';
 
 @Component({
@@ -7,16 +6,15 @@ import {SetiLeaderInfoService} from '../services/seti-leader-info.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+  client: any;
 
-  constructor(private leaderInfoService: SetiLeaderInfoService) {}
+  constructor(private leaderInfoService: SetiLeaderInfoService) {
+    this.leaderInfoService.getUsuario()
+      .subscribe(value => this.client = value);
+  }
 
-  client$ = this.leaderInfoService.getLeaderSetiInfo()
-    .pipe(
-      map(data => ({
-        client: data.pclie_nombre
-        })
-      )
-    )
-
+  ngOnInit() {
+    this.client = this.leaderInfoService.userData;
+  }
 }

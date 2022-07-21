@@ -1,87 +1,83 @@
-<app-base>
-    <div class="liderTalento">
-        <div class="right talento">
-            <p class="color mb-0">Javier Andrés Rodríguez</p>
-            <p class="color mb-0">CC: 1.034.456</p>
-            <p class="color">Ingeniero de software</p>
+<div class=" right ">
+  <p class="lider mt-3 ">Líder: Ana María Garzón</p>
+  <p class="fechaA">{{fecha | date : 'longDate'}}</p>
+</div>
+<div class="right">
+  <p class="talento mb-0">Javier Andrés Rodríguez</p>
+  <p class="cc mb-0">Cc:1.034.456</p>
+  <p class="cargo">Ingeniero de software</p>
+</div>
+<div class="d-flex align-items-center flex-column h-80">
+  <h1 class="">Seguimiento Banco</h1>
+  <div class="w-75 h-75">
+    <form>
+      <div class="row h-100 ">
+        <div class="col-lg-6 d-flex justify-content-center flex-column">
+          <h2 class="mt-0 mb-4">Reconocimientos</h2>
+          <mat-form-field appearance="outline">
+            <mat-label>Habilidades blandas</mat-label>
+            <input matInput>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Habilidades técnicas</mat-label>
+            <input matInput>
+          </mat-form-field>
         </div>
-        <div class="right">
-            <p class="color mb-0 ">Líder: Ana María Garzón</p>
-            <p class="color">{{fecha | date : 'medium'}}</p>
+        <div class="col-lg-6 d-flex flex-column  ">
+          <h2 class="mt-5">Competencias Seti</h2>
+          <div class="estrella align-items-center justify-content-between">
+            <p class="calificacion">Comunicación:</p>
+            <div class="star">
+              <ngb-rating [resettable]="true" [max]="5"></ngb-rating>
+            </div>
+          </div>
+          <div class="estrella align-items-center justify-content-between">
+            <p class="calificacion">Trabajo en equipo:</p>
+            <div class="star">
+              <ngb-rating [resettable]="true" [max]="5"></ngb-rating>
+            </div>
+          </div>
+          <div class="estrella align-items-center justify-content-between">
+            <p class="calificacion">Orientación al servicio:</p>
+            <div class="star">
+              <ngb-rating [resettable]="true" [max]="5"></ngb-rating>
+            </div>
+          </div>
+          <div class="estrella align-items-center justify-content-between">
+            <p class="calificacion">Orientación al logro:</p>
+            <div class="star">
+              <ngb-rating [resettable]="true" [max]="5"></ngb-rating>
+            </div>
+          </div>
+          <div class="estrella align-items-center justify-content-between">
+            <p class="calificacion">Conocimientos técnicos:</p>
+            <div class="star">
+              <ngb-rating [resettable]="true" [max]="5"></ngb-rating>
+            </div>
+          </div>
         </div>
-    </div>
-    <div class="d-flex align-items-center flex-column h-80">
-        <h1 class="color">Seguimiento Banco</h1>
-        <div class="w-75 h-75">
-            <form [formGroup]="talentoBancoForm" (ngSubmit)="talentoBanco">
-                <div class="row h-100 ">
-                    <div class="col-lg-6 d-flex justify-content-center flex-column">
-                        <h2 class=" color mt-0 mb-4">Reconocimientos</h2>
-                        <mat-form-field appearance="outline">
-                            <mat-label class="mt-4">Habilidades blandas</mat-label>
-                            <input formControlName="habilidadesBlandasRec" type="text" matInput>
-                        </mat-form-field>
-                        <mat-form-field appearance="outline">
-                            <mat-label>Habilidades técnicas</mat-label>
-                            <input formControlName="habilidadesTecnicasRec" type="text" matInput>
-                        </mat-form-field>
-                    </div>
-                    <div class="col-lg-6 d-flex flex-column  ">
-                        <h2 class=" color mt-5">Competencias Seti</h2>
-                        <div class="estrella align-items-center justify-content-between">
-                            <p class="calificacion">Comunicación:</p>
-                            <div class="star">
-                                <ngb-rating [resettable]="true" [max]="5"></ngb-rating>
-                            </div>
-                        </div>
-                        <div class="estrella align-items-center justify-content-between">
-                            <p class="calificacion">Trabajo en equipo:</p>
-                            <div class="star">
-                                <ngb-rating [resettable]="true" [max]="5"></ngb-rating>
-                            </div>
-                        </div>
-                        <div class="estrella align-items-center justify-content-between">
-                            <p class="calificacion">Orientación al servicio:</p>
-                            <div class="star">
-                                <ngb-rating [resettable]="true" [max]="5"></ngb-rating>
-                            </div>
-                        </div>
-                        <div class="estrella align-items-center justify-content-between">
-                            <p class="calificacion ">Orientación al logro:</p>
-                            <div class="star">
-                                <ngb-rating [resettable]="true" [max]="5"></ngb-rating>
-                            </div>
-                        </div>
-                        <div class="estrella align-items-center justify-content-between">
-                            <p class="calificacion">Conocimientos técnicos:</p>
-                            <div class="star">
-                                <ngb-rating [resettable]="true" [max]="5"></ngb-rating>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row h-100">
-                    <div class=" col-lg-6 d-flex justify-content-center flex-column">
-                        <h2 class=" color mb-4">Oportunidades de mejora</h2>
-                        <mat-form-field appearance="outline">
-                            <mat-label>Habilidades blandas</mat-label>
-                            <input formControlName="habilidadesBlandasOpor"  matInput>
-                        </mat-form-field>
-                        <mat-form-field appearance="outline">
-                            <mat-label>Habilidades técnicas</mat-label>
-                            <input formControlName="habilidadesTecnicasOpor" matInput>
-                        </mat-form-field>
-                    </div>
-                    <div class="col-lg-6 d-flex   flex-column mt-3 ">
-                        <button class="mb-4 btn Btn" mat-raised-button>Acciones de mejora</button>
-                        <button class="mb-4 btn" mat-raised-button>Seguimientos</button>
-                    </div>
-                </div>
-                <div class="d-flex justify-content-center mb-2 ">
-                    <button class="d-inline-block mx-4 btn" mat-raised-button>Regresar</button>
-                    <button [disabled]="talentoBancoForm.invalid " class="btnG" mat-raised-button>Guardar</button>
-                </div>
-            </form>
+      </div>
+      <div class="row h-100">
+        <div class=" col-lg-6 d-flex justify-content-center flex-column">
+          <h2 class="mb-4">Oportunidades de mejora</h2>
+          <mat-form-field appearance="outline">
+            <mat-label>Habilidades blandas</mat-label>
+            <input matInput>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Habilidades técnicas</mat-label>
+            <input matInput>
+          </mat-form-field>
         </div>
-    </div>
-</app-base>
+        <div class="col-lg-6 d-flex   flex-column mt-3 ">
+          <button class="mb-4 btn Btn" mat-raised-button>Acciones de mejora</button>
+          <button class="mb-4 btn" mat-raised-button>Seguimientos</button>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center mb-2 ">
+        <button class="d-inline-block mx-4 btn" mat-raised-button>Regresar</button>
+        <button class="btnG" mat-raised-button>Guardar</button>
+      </div>
+    </form>
+  </div>
+</div>

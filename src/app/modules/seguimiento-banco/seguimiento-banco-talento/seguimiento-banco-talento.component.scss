@@ -1,6 +1,35 @@
+h1 {
+    color: #C2382F;
+}
+
+h2 {
+    color: #C2382F;
+}
+
+.fechaA {
+    color: #C2382F;
+}
+
+.lider {
+    color: #C2382F;
+    margin-bottom: 0;
+}
+
 .right {
     text-align: right;
     margin-right: 1rem;
+}
+
+.talento {
+    color: #C2382F;
+}
+
+.cc {
+    color: #C2382F;
+}
+
+.cargo {
+    color: #C2382F;
 }
 
 .btnG {
@@ -10,13 +39,12 @@
 
 .btn {
     background-color: white;
-    color: black;   
+    color: black;
 }
 
 ngb-rating {
     color:#C2382F;
     font-size: 33px;
-    padding-left: 0rem
 }
 
 .d-inline-flex {
@@ -43,12 +71,5 @@ ngb-rating {
     .star{
         text-align: center;
     }
-    .liderTalento{
-        display: flex;
-        justify-content: space-between;
-    }
-    .talento{
-        text-align: left;
-        margin-left: 1rem;
-    }
+
 }

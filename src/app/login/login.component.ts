@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms'
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {AuthService} from '../services/auth.service';
 import {Router} from '@angular/router';
+import {SetiLeaderInfoService} from '../services/seti-leader-info.service';
 
 @Component({
   selector: 'app-login',
@@ -10,14 +11,12 @@ import {Router} from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  inSubmission = false
-  @ViewChild('content', {static: false}) private content: any
+  inSubmission = false;
+  @ViewChild('content', {static: false}) private content: any;
 
-  email = new FormControl('', [Validators.required])
-
-  password = new FormControl('', [Validators.required])
-
-  typeAuth = new FormControl('L')
+  email = new FormControl('', [Validators.required]);
+  password = new FormControl('', [Validators.required]);
+  typeAuth = new FormControl('L');
 
   loginForm = new FormGroup(
     {
@@ -27,7 +26,10 @@ export class LoginComponent {
     }
   )
 
-  constructor(private modalService: NgbModal, private authService: AuthService, private router: Router) {}
+  constructor(private modalService: NgbModal,
+              private authService: AuthService,
+              private router: Router,
+              private setiLeaderService: SetiLeaderInfoService) {}
 
   open(content: any) {
     this.modalService.open(content, {centered: true, size: 'lg'});
@@ -37,16 +39,17 @@ export class LoginComponent {
     if (this.loginForm.invalid) {
       return;
     }
-    this.inSubmission = true
+    this.inSubmission = true;
     this.authService.login(this.loginForm.value)
       .subscribe({
         next: response => {
           localStorage.setItem('token', JSON.stringify(response.response))
-          this.router.navigateByUrl('/')
+          this.setiLeaderService.getLeaderSetiInfo();
+          this.router.navigate(['/']);
         },
         error: () => {
-          this.open(this.content)
-          this.inSubmission = false
+          this.open(this.content);
+          this.inSubmission = false;
         }
       }
     )

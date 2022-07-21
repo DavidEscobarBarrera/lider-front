@@ -8,8 +8,7 @@ import {map} from 'rxjs';
 })
 export class ClientLeaderService {
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   getClientLeaders(id: string) {
     return this.http.get<ClientLeaderResponse>(`http://localhost:3005/v1/getleaderclientbyid/${id}`)

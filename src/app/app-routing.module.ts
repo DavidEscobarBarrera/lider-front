@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { AuthGuard } from './guards/auth.guard';
-import { LoginGuard } from './guards/login.guard';
-import {RegistrarAccionMejoraComponent} from "./registrar-accion-mejora/registrar-accion-mejora.component";
-import {UnderConstructionComponent} from "./under-construction/under-construction.component";
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {HomeComponent} from './home/home.component';
+import {LoginComponent} from './login/login.component';
+import {AuthGuard} from './guards/auth.guard';
+import {LoginGuard} from './guards/login.guard';
+import {RegistrarAccionMejoraComponent} from './registrar-accion-mejora/registrar-accion-mejora.component';
+import {UnderConstructionComponent} from './under-construction/under-construction.component';
 
 const routes: Routes = [
   {
@@ -37,4 +37,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
