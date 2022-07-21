@@ -10,7 +10,7 @@ import {AccionMejoraService} from '../services/accion-mejora.service';
 export class RegistrarAccionMejoraComponent {
   fecha: Date = new Date;
   success = false;
-  inSubmission = false
+  inSubmission = false;
   username = 'Andrés García';
 
   constructor(private accionMejoraService: AccionMejoraService) {

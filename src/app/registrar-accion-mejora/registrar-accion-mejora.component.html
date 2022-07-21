@@ -1,11 +1,11 @@
 <app-base>
   <div class="mt-2 mb-2 right">
-    <p class="lider m-0 ">Líder: Ana María Garzón</p>
-    <p class="fechaA">{{fecha | date : 'longDate'}}</p>
+    <p class="color m-0 ">Líder: Ana María Garzón</p>
+    <p class="color mb-0">{{fecha | date : 'longDate'}}</p>
   </div>
   <div class="d-flex align-items-center flex-column h-80">
     <div>
-      <h1 class="mb-4 text-center">Registrar acción de mejora</h1>
+      <h1 class="mb-4 text-center color">Registrar acción de mejora</h1>
     </div>
     <div class="w-75 h-75">
       <form [formGroup]="accionMejoraForm" (ngSubmit)="accionMejora()">
