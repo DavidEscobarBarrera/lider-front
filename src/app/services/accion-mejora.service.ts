@@ -9,6 +9,6 @@ export class AccionMejoraService {
   constructor(private http: HttpClient) {}
 
   createAction(action: any) {
-    return this.http.post('http://localhost:3007/v1/action', action)
+    return this.http.post('http://localhost:3007/v1/action', action);
   }
 }

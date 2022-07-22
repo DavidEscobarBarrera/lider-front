@@ -1,82 +1,94 @@
-<div class=" right ">
-  <p class="lider mt-3 ">Líder: Ana María Garzón</p>
-  <p class="fechaA">{{fecha | date : 'longDate'}}</p>
+<div class="liderTalento">
+  <div class="right talento"><p class="color mb-0">Javier Andrés Rodríguez</p>
+    <p class="color mb-0">CC: 1.034.456</p>
+    <p class="color m-0">Ingeniero de software</p></div>
+  <div class="right">
+    <p class="color mb-0">Líder: Ana María Garzón</p>
+    <p class="color m-0">{{fecha | date : 'medium'}}</p>
+  </div>
 </div>
-<div class="right">
-  <p class="talento mb-0">Javier Andrés Rodríguez</p>
-  <p class="cc mb-0">Cc:1.034.456</p>
-  <p class="cargo">Ingeniero de software</p>
-</div>
-<div class="d-flex align-items-center flex-column h-80">
-  <h1 class="">Seguimiento Banco</h1>
-  <div class="w-75 h-75">
-    <form>
-      <div class="row h-100 ">
-        <div class="col-lg-6 d-flex justify-content-center flex-column">
-          <h2 class="mt-0 mb-4">Reconocimientos</h2>
+<div class="d-flex align-items-center flex-column">
+  <h1 class="color">Seguimiento Banco</h1>
+  <div class="w-75 mb-5">
+    <form [formGroup]="seguimientoBancoTalentoForm" (ngSubmit)="seguimientoBancoTalento()">
+      <div class="row test">
+        <div class="col-lg-6 d-flex justify-content-center flex-column margin-bottom">
+          <h2 class=" color mt-0 mb-4">Reconocimientos</h2>
           <mat-form-field appearance="outline">
-            <mat-label>Habilidades blandas</mat-label>
-            <input matInput>
+            <mat-label class="mt-4">Habilidades blandas</mat-label>
+            <input autocomplete="off" [formControl]="reco_habilidadBlanda" matInput>
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Habilidades técnicas</mat-label>
-            <input matInput>
+            <input autocomplete="off" [formControl]="reco_habilidadTecnica" matInput>
           </mat-form-field>
         </div>
-        <div class="col-lg-6 d-flex flex-column  ">
-          <h2 class="mt-5">Competencias Seti</h2>
+        <div class="col-lg-6 d-flex flex-column margin-bottom">
+          <h2 class=" color mt-5">Competencias SETI</h2>
           <div class="estrella align-items-center justify-content-between">
-            <p class="calificacion">Comunicación:</p>
+            <p class="rating">Comunicación:</p>
             <div class="star">
-              <ngb-rating [resettable]="true" [max]="5"></ngb-rating>
+              <ngb-rating [formControl]="comunicacion" [resettable]="true" [max]="5"></ngb-rating>
             </div>
           </div>
           <div class="estrella align-items-center justify-content-between">
-            <p class="calificacion">Trabajo en equipo:</p>
+            <p class="rating">Trabajo en equipo:</p>
             <div class="star">
-              <ngb-rating [resettable]="true" [max]="5"></ngb-rating>
+              <ngb-rating [formControl]="trabajoEnEquipo" [resettable]="true" [max]="5"></ngb-rating>
             </div>
           </div>
           <div class="estrella align-items-center justify-content-between">
-            <p class="calificacion">Orientación al servicio:</p>
+            <p class="rating">Orientación al servicio:</p>
             <div class="star">
-              <ngb-rating [resettable]="true" [max]="5"></ngb-rating>
+              <ngb-rating [formControl]="orientacionAlServicio" [resettable]="true" [max]="5"></ngb-rating>
             </div>
           </div>
           <div class="estrella align-items-center justify-content-between">
-            <p class="calificacion">Orientación al logro:</p>
+            <p class="rating ">Orientación al logro:</p>
             <div class="star">
-              <ngb-rating [resettable]="true" [max]="5"></ngb-rating>
+              <ngb-rating [formControl]="orientacionAlLogro" [resettable]="true" [max]="5"></ngb-rating>
             </div>
           </div>
           <div class="estrella align-items-center justify-content-between">
-            <p class="calificacion">Conocimientos técnicos:</p>
+            <p class="rating">Conocimientos técnicos:</p>
             <div class="star">
-              <ngb-rating [resettable]="true" [max]="5"></ngb-rating>
+              <ngb-rating [formControl]="conocimientoTecnico" [resettable]="true" [max]="5"></ngb-rating>
             </div>
           </div>
+          <p *ngIf="
+          comunicacion.value <= 0  && comunicacion.dirty ||
+          trabajoEnEquipo.value <= 0 && trabajoEnEquipo.dirty ||
+          orientacionAlServicio.value <= 0 && orientacionAlServicio.dirty ||
+          orientacionAlLogro.value <= 0 && orientacionAlLogro.dirty ||
+          conocimientoTecnico.value <= 0 && conocimientoTecnico.dirty" class="text-danger  mt-2">
+            Debes calificar todas las competencias seti</p>
         </div>
       </div>
-      <div class="row h-100">
-        <div class=" col-lg-6 d-flex justify-content-center flex-column">
-          <h2 class="mb-4">Oportunidades de mejora</h2>
+
+      <div class="row">
+        <div class=" col-lg-6 d-flex justify-content-center flex-column margin-bottom">
+          <h2 class=" color mb-4">Oportunidades de mejora</h2>
           <mat-form-field appearance="outline">
             <mat-label>Habilidades blandas</mat-label>
-            <input matInput>
+            <input autocomplete="off" [formControl]="opme_habilidadBlanda" matInput>
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Habilidades técnicas</mat-label>
-            <input matInput>
+            <input autocomplete="off" [formControl]="opme_habilidadTecnica" matInput>
           </mat-form-field>
         </div>
-        <div class="col-lg-6 d-flex   flex-column mt-3 ">
-          <button class="mb-4 btn Btn" mat-raised-button>Acciones de mejora</button>
-          <button class="mb-4 btn" mat-raised-button>Seguimientos</button>
+        <div class="col-lg-6 justify-content-center d-flex flex-column buttons-div margin-bottom">
+          <button routerLink="/under-construction"
+                  class="mb-4 btn Btn d-inline-block button" mat-raised-button>Acciones de mejora</button>
+          <button routerLink="/under-construction"
+                  class="mb-4 btn d-inline-block button" mat-raised-button>Seguimientos</button>
         </div>
       </div>
-      <div class="d-flex justify-content-center mb-2 ">
-        <button class="d-inline-block mx-4 btn" mat-raised-button>Regresar</button>
-        <button class="btnG" mat-raised-button>Guardar</button>
+      <div class="d-flex justify-content-center mt-2 mb-2">
+        <button routerLink="/seguimiento-banco" class="d-inline-block mx-4 btn" mat-raised-button>Regresar</button>
+        <button type="submit" [disabled]="inSubmission || seguimientoBancoTalentoForm.invalid"
+                class="btnG" mat-raised-button>Guardar
+        </button>
       </div>
     </form>
   </div>

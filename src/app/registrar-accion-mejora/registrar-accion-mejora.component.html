@@ -1,60 +1,59 @@
-
-  <div class="mt-2 mb-2 right">
-    <p class="color m-0 ">Líder: Ana María Garzón</p>
-    <p class="color mb-0">{{fecha | date : 'longDate'}}</p>
+<div class="mt-2 mb-2 right">
+  <p class="color m-0 ">Líder: Ana María Garzón</p>
+  <p class="color mb-0">{{fecha | date : 'longDate'}}</p>
+</div>
+<div class="d-flex align-items-center flex-column h-80">
+  <div>
+    <h1 class="mb-4 text-center color">Registrar acción de mejora</h1>
   </div>
-  <div class="d-flex align-items-center flex-column h-80">
-    <div>
-      <h1 class="mb-4 text-center color">Registrar acción de mejora</h1>
-    </div>
-    <div class="w-75 h-75">
-      <form [formGroup]="accionMejoraForm" (ngSubmit)="accionMejora()">
-        <div class="row h-100">
-          <div class="col-lg-6 d-flex justify-content-center flex-column">
-            <mat-form-field appearance="outline">
-              <mat-label class="accion">Acción</mat-label>
-              <input formControlName="acme_accion" type="text" matInput>
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-              <mat-label class="accion">Actividad</mat-label>
-              <input formControlName="acme_actividad" type="text" matInput>
-            </mat-form-field>
-            <mat-form-field appearance="legacy">
-              <mat-label class="accion">Responsable</mat-label>
-              <input disabled [value]="username" type="text" matInput>
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-              <mat-label>Estado</mat-label>
-              <mat-select formControlName="acme_estado">
-                <mat-option class="option" value="En Ejecución">En ejecución</mat-option>
-                <mat-option class="option" value="Pendiente">Pendiente</mat-option>
-                <mat-option class="option" value="Completado">Completado</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-          <div class="col-lg-6 d-flex   flex-column">
-            <mat-form-field appearance="outline">
-              <mat-label class="fechaL">Fecha límite</mat-label>
-              <input formControlName="acme_fechafin" type="" matInput [matDatepicker]="picker">
-              <mat-hint>MM/DD/AAAA</mat-hint>
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-            <mat-form-field class="mt-4" appearance="outline">
-              <mat-label class="observaciones">Observaciones</mat-label>
-              <input formControlName="acme_observaciones" type="text" matInput>
-              <textarea  matInput rows="7"></textarea>
-            </mat-form-field>
-          </div>
+  <div class="w-75 h-75">
+    <form [formGroup]="accionMejoraForm" (ngSubmit)="accionMejora()">
+      <div class="row h-100">
+        <div class="col-lg-6 d-flex justify-content-center flex-column">
+          <mat-form-field appearance="outline">
+            <mat-label class="accion">Acción</mat-label>
+            <input formControlName="acme_accion" matInput>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label class="accion">Actividad</mat-label>
+            <input formControlName="acme_actividad" matInput>
+          </mat-form-field>
+          <mat-form-field appearance="legacy">
+            <mat-label class="accion">Responsable</mat-label>
+            <input disabled [value]="username" matInput>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Estado</mat-label>
+            <mat-select formControlName="acme_estado">
+              <mat-option class="option" [value]="'En Ejecución'">En ejecución</mat-option>
+              <mat-option class="option" [value]="'Pendiente'">Pendiente</mat-option>
+              <mat-option class="option" [value]="'Completado'">Completado</mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
-        <div *ngIf="success" class="alert alert-success text-center" role="alert">
-          Acción de mejora registrada con éxito
+        <div class="col-lg-6 d-flex   flex-column">
+          <mat-form-field appearance="outline">
+            <mat-label class="fechaL">Fecha límite</mat-label>
+            <input formControlName="acme_fechafin" matInput [matDatepicker]="picker">
+            <mat-hint>MM/DD/AAAA</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field class="mt-4" appearance="outline">
+            <mat-label class="observaciones">Observaciones</mat-label>
+            <input formControlName="acme_observaciones" matInput>
+            <textarea matInput rows="7"></textarea>
+          </mat-form-field>
         </div>
-        <div class="d-flex justify-content-center mt-4 mb-4">
-          <button (click)="cancel()" class="d-inline-block mx-4 btnC" mat-raised-button>Cancelar</button>
-          <button [disabled]="accionMejoraForm.invalid || inSubmission" class="btnG" mat-raised-button>Guardar</button>
-        </div>
-      </form>
-    </div>
+      </div>
+      <div *ngIf="success" class="alert alert-success text-center" role="alert">
+        Acción de mejora registrada con éxito
+      </div>
+      <div class="d-flex justify-content-center mt-4 mb-4">
+        <button (click)="cancel()" class="d-inline-block mx-4 btnC" mat-raised-button>Cancelar</button>
+        <button [disabled]="accionMejoraForm.invalid || inSubmission" class="btnG" mat-raised-button>Guardar</button>
+      </div>
+    </form>
   </div>
+</div>
 
