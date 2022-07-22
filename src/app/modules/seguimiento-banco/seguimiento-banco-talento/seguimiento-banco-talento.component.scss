@@ -1,75 +1,94 @@
-h1 {
-    color: #C2382F;
-}
-
-h2 {
-    color: #C2382F;
-}
-
-.fechaA {
-    color: #C2382F;
-}
-
-.lider {
-    color: #C2382F;
-    margin-bottom: 0;
-}
-
 .right {
-    text-align: right;
-    margin-right: 1rem;
-}
-
-.talento {
-    color: #C2382F;
-}
-
-.cc {
-    color: #C2382F;
-}
-
-.cargo {
-    color: #C2382F;
+  text-align: right;
+  margin-right: 1rem;
 }
 
 .btnG {
-    background-color: #C2382F;
-    color: white;
+  background-color: #C2382F;
+  color: white;
 }
+
 
 .btn {
-    background-color: white;
-    color: black;
-}
-
-ngb-rating {
-    color:#C2382F;
-    font-size: 33px;
+  background-color: white;
+  color: black;
 }
 
 .d-inline-flex {
-    gap: 10px;
+  gap: 10px;
 }
 
-.calificacion {
-    text-align: left;
-    margin: 0;
+ngb-rating {
+  color: #C2382F;
+  font-size: 33px;
+  padding-left: 0
 }
-.star{
-    text-align: left;
+
+h1 {
+  margin-top: 2rem;
+}
+
+.rating {
+  text-align: left;
+  margin: 0;
+}
+
+.star {
+  text-align: left;
+}
+
+.liderTalento {
+  display: none;
+}
+
+.test {
+  flex-direction: column-reverse;
+}
+
+.margin-bottom {
+  margin-bottom: 3rem;
 }
 
 @media (min-width: 1000px) {
-    .estrella {
-        display: flex;
-    }
+  h1 {
+    margin: 0 !important;
+  }
 
-    .Btn {
-        margin-top: 4.5rem;
-    }
+  .margin-bottom {
+    margin-bottom: 0;
+  }
 
-    .star{
-        text-align: center;
-    }
+  .estrella {
+    display: flex;
+  }
 
+  .Btn {
+    margin-top: 4.5rem;
+  }
+
+  .star {
+    text-align: center;
+  }
+
+  .liderTalento {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .talento {
+    text-align: left;
+    margin-left: 1rem;
+  }
+
+  .buttons-div {
+    align-items: flex-end;
+  }
+
+  .button {
+    width: 50%;
+  }
+
+  .test {
+    flex-direction: row;
+  }
 }

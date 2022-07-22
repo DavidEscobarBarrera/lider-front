@@ -33,8 +33,8 @@
       <th mat-header-cell *matHeaderCellDef> Ultimo seguimiento</th>
       <td mat-cell *matCellDef="let element">
           <span
-            routerLink="/under-construction"
-            class="blue">{{element.psegu_fecha === null ? 'Sin evaluación' : element.psegu_fecha}}
+            routerLink="/under-construction" class="blue">
+            {{element.psegu_fecha === null ? 'Sin evaluación' : element.psegu_fecha | date : 'longDate'}}
           </span>
       </td>
     </ng-container>
