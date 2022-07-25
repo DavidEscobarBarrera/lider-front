@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {SeguimientoTalentoBancoService} from "../../../services/seguimiento-talento-banco.service";
+import { FormControl, FormGroup, Validators, FormBuilder, FormArray } from '@angular/forms';
+import { SeguimientoTalentoBancoService, seguimiento } from '../../../services/seguimiento-talento-banco.service';
 
 @Component({
   selector: 'app-seguimiento-banco-talento',
@@ -13,7 +13,7 @@ export class SeguimientoBancoTalentoComponent {
 
   constructor(private seguimientoTalentoBancoService: SeguimientoTalentoBancoService) {}
 
-  id = new FormControl(6)
+  id = new FormControl(251)
   comunicacion = new FormControl(null, [Validators.required, Validators.min(1)])
   trabajoEnEquipo = new FormControl(null, [Validators.required, Validators.min(1)])
   orientacionAlServicio = new FormControl(null, [Validators.required, Validators.min(1)])
@@ -24,24 +24,37 @@ export class SeguimientoBancoTalentoComponent {
   reco_habilidadTecnica = new FormControl('')
   reco_habilidadBlanda = new FormControl('')
 
+  competencia1 = new FormControl (1)
+  competencia2 = new FormControl (2)
+  competencia3 = new FormControl (3)
+  competencia4 = new FormControl (4)
+  competencia5 = new FormControl (5)
+
   seguimientoBancoTalentoForm = new FormGroup({
     tale_id: this.id,
-    comp_comunicacion: this.comunicacion,
-    comp_trabajoenequipo: this.trabajoEnEquipo,
-    comp_orientacionalservicio: this.orientacionAlServicio,
-    comp_orientacionallogro: this.orientacionAlLogro,
-    comp_conocimientotecnico: this.conocimientoTecnico,
+    competencias: new FormArray ([
+      new FormGroup ({tico_id : this.competencia1 ,valor: this.comunicacion}) ,
+      new FormGroup ({tico_id : this.competencia2 , valor: this.trabajoEnEquipo}) ,
+      new FormGroup ({tico_id : this.competencia3 , valor: this.orientacionAlServicio}) ,
+      new FormGroup ({tico_id : this.competencia4 , valor: this.orientacionAlLogro}) ,
+      new FormGroup ({tico_id : this.competencia5 , valor: this.conocimientoTecnico})
+    ]),
     opme_habilidadblanda: this.opme_habilidadBlanda,
     opme_habilidadtecnica: this.opme_habilidadTecnica,
-    reco_habilidadblanda: this.reco_habilidadTecnica,
-    reco_habilidadtecnica: this.reco_habilidadBlanda
+    reco_habilidadblanda: this.reco_habilidadBlanda,
+    reco_habilidadtecnica: this.reco_habilidadTecnica
   })
 
+
+
+
   seguimientoBancoTalento() {
-    if (this.seguimientoBancoTalentoForm.invalid) {
-      return;
-    }
-    this.inSubmission = true;
-    this.seguimientoTalentoBancoService.seguimientoBanco(this.seguimientoBancoTalentoForm.value)
+      if (this.seguimientoBancoTalentoForm.invalid) {
+        return;
+      }
+      this.inSubmission = true;
+      this.seguimientoTalentoBancoService.seguimientoBanco(this.seguimientoBancoTalentoForm.value)
+      console.log(this.seguimientoBancoTalentoForm.value)
+
   }
 }
