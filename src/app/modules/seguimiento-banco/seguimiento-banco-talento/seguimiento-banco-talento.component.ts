@@ -64,6 +64,5 @@ export class SeguimientoBancoTalentoComponent {
       this.inSubmission = true;
       this.seguimientoTalentoBancoService.seguimientoBanco(this.seguimientoBancoTalentoForm.value)
       console.log(this.seguimientoBancoTalentoForm.value)
-
   }
 }
