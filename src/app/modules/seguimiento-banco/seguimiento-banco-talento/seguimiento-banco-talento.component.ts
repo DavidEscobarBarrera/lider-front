@@ -11,33 +11,16 @@ export class SeguimientoBancoTalentoComponent {
   fecha: Date = new Date;
   inSubmission = false;
 
-  constructor(private seguimientoTalentoBancoService: SeguimientoTalentoBancoService) {}
-
-  id = new FormControl(251)
-  comunicacion = new FormControl(null, [Validators.required, Validators.min(1)])
-  trabajoEnEquipo = new FormControl(null, [Validators.required, Validators.min(1)])
-  orientacionAlServicio = new FormControl(null, [Validators.required, Validators.min(1)])
-  orientacionAlLogro = new FormControl(null, [Validators.required, Validators.min(1)])
-  conocimientoTecnico = new FormControl(null, [Validators.required, Validators.min(1)])
+  id = new FormControl(1)
   opme_habilidadBlanda = new FormControl('')
   opme_habilidadTecnica = new FormControl('')
   reco_habilidadTecnica = new FormControl('')
   reco_habilidadBlanda = new FormControl('')
 
-  competencia1 = new FormControl (1)
-  competencia2 = new FormControl (2)
-  competencia3 = new FormControl (3)
-  competencia4 = new FormControl (4)
-  competencia5 = new FormControl (5)
 
   seguimientoBancoTalentoForm = new FormGroup({
     tale_id: this.id,
     competencias: new FormArray ([
-      new FormGroup ({tico_id : this.competencia1 ,valor: this.comunicacion}) ,
-      new FormGroup ({tico_id : this.competencia2 , valor: this.trabajoEnEquipo}) ,
-      new FormGroup ({tico_id : this.competencia3 , valor: this.orientacionAlServicio}) ,
-      new FormGroup ({tico_id : this.competencia4 , valor: this.orientacionAlLogro}) ,
-      new FormGroup ({tico_id : this.competencia5 , valor: this.conocimientoTecnico})
     ]),
     opme_habilidadblanda: this.opme_habilidadBlanda,
     opme_habilidadtecnica: this.opme_habilidadTecnica,
@@ -45,8 +28,34 @@ export class SeguimientoBancoTalentoComponent {
     reco_habilidadtecnica: this.reco_habilidadTecnica
   })
 
+  constructor(private seguimientoTalentoBancoService: SeguimientoTalentoBancoService, public fb: FormBuilder) {
+    this.obtenerCompetencias();
+  }
 
+  get competenciasForm() {
+    return this.seguimientoBancoTalentoForm.get('competencias') as FormArray;
+  }
 
+  obtenerCompetencias() {
+    this.seguimientoTalentoBancoService.getCompetencias().subscribe(
+      (response: any) => {
+        this.asignarCompetencias(response.data);
+      }
+    );
+  }
+
+  asignarCompetencias(competencias: any[]) {
+    competencias.forEach(competencia => {
+      this.competenciasForm.push(
+        this.fb.group({
+            tico_id: [competencia.tico_id],
+            nombre: [competencia.tico_nombre],
+            valor: [null, Validators.required]
+          }
+        )
+      );
+    });
+  }
 
   seguimientoBancoTalento() {
       if (this.seguimientoBancoTalentoForm.invalid) {
@@ -55,6 +64,5 @@ export class SeguimientoBancoTalentoComponent {
       this.inSubmission = true;
       this.seguimientoTalentoBancoService.seguimientoBanco(this.seguimientoBancoTalentoForm.value)
       console.log(this.seguimientoBancoTalentoForm.value)
-
   }
 }

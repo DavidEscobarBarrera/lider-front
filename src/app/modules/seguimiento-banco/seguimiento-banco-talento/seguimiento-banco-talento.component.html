@@ -23,45 +23,18 @@
             <input autocomplete="off" [formControl]="reco_habilidadTecnica" matInput>
           </mat-form-field>
         </div>
-        <div class="col-lg-6 d-flex flex-column margin-bottom">
+
+        <div formArrayName="competencias" class="col-lg-6 d-flex flex-column margin-bottom">
           <h2 class=" color mt-5">Competencias SETI</h2>
-          <div class="estrella align-items-center justify-content-between">
-            <p class="rating">Comunicación:</p>
-            <div class="star">
-              <ngb-rating [formControl]="comunicacion" [resettable]="true" [max]="5"></ngb-rating>
-            </div>
+          <div *ngFor="let competencia of competenciasForm.controls; let i = index" class="estrella align-items-center justify-content-between">
+            <ng-container [formGroupName]="i">
+              <p class="rating">{{competencia.value.nombre | titlecase}}</p>
+              <div class="star">
+                <ngb-rating formControlName="valor" [resettable]="true" [max]="5"></ngb-rating>
+              </div>
+            </ng-container>
           </div>
-          <div class="estrella align-items-center justify-content-between">
-            <p class="rating">Trabajo en equipo:</p>
-            <div class="star">
-              <ngb-rating [formControl]="trabajoEnEquipo" [resettable]="true" [max]="5"></ngb-rating>
-            </div>
-          </div>
-          <div class="estrella align-items-center justify-content-between">
-            <p class="rating">Orientación al servicio:</p>
-            <div class="star">
-              <ngb-rating [formControl]="orientacionAlServicio" [resettable]="true" [max]="5"></ngb-rating>
-            </div>
-          </div>
-          <div class="estrella align-items-center justify-content-between">
-            <p class="rating ">Orientación al logro:</p>
-            <div class="star">
-              <ngb-rating [formControl]="orientacionAlLogro" [resettable]="true" [max]="5"></ngb-rating>
-            </div>
-          </div>
-          <div class="estrella align-items-center justify-content-between">
-            <p class="rating">Conocimientos técnicos:</p>
-            <div class="star">
-              <ngb-rating [formControl]="conocimientoTecnico" [resettable]="true" [max]="5"></ngb-rating>
-            </div>
-          </div>
-          <p *ngIf="
-          comunicacion.value <= 0  && comunicacion.dirty ||
-          trabajoEnEquipo.value <= 0 && trabajoEnEquipo.dirty ||
-          orientacionAlServicio.value <= 0 && orientacionAlServicio.dirty ||
-          orientacionAlLogro.value <= 0 && orientacionAlLogro.dirty ||
-          conocimientoTecnico.value <= 0 && conocimientoTecnico.dirty" class="text-danger  mt-2">
-            Debes calificar todas las competencias seti</p>
+          <p *ngIf="seguimientoBancoTalentoForm.invalid"> Debes calificar todas las competencias seti</p>
         </div>
       </div>
 

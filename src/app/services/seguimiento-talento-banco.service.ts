@@ -19,10 +19,14 @@ export interface seguimiento {
   providedIn: 'root'
 })
 export class SeguimientoTalentoBancoService {
-
+  url: string = 'http://localhost:3005/v1/';
   constructor(private http: HttpClient) { }
 
   seguimientoBanco (seguimiento: seguimiento) {
-    return this.http.post('http://localhost:3005/v1/prueba/13', seguimiento)
+    return this.http.post(this.url + 'prueba/13', seguimiento)
+  }
+
+  getCompetencias () {
+    return this.http.get(this.url + 'gettypecompetences');
   }
 }
