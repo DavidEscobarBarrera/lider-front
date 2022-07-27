@@ -1,9 +1,9 @@
-<div class="liderTalento">
-  <div class="right talento"><p class="color mb-0">Javier Andrés Rodríguez</p>
-    <p class="color mb-0">CC: 1.034.456</p>
-    <p class="color m-0">Ingeniero de software</p></div>
+<div *ngIf="talentInfo | async as info" class="liderTalento">
+  <div class="right talento"><p class="color mb-0">{{info.nombre}}</p>
+    <p class="color mb-0">CC: {{info.documento}}</p>
+    <p class="color m-0">{{info.cargo}}</p></div>
   <div class="right">
-    <p class="color mb-0">Líder: Ana María Garzón</p>
+    <p class="color mb-0">Líder: {{info.lider}}</p>
     <p class="color m-0">{{fecha | date : 'medium'}}</p>
   </div>
 </div>
@@ -26,7 +26,8 @@
 
         <div formArrayName="competencias" class="col-lg-6 d-flex flex-column margin-bottom">
           <h2 class=" color mt-5">Competencias SETI</h2>
-          <div *ngFor="let competencia of competenciasForm.controls; let i = index" class="estrella align-items-center justify-content-between">
+          <div *ngFor="let competencia of competenciasForm.controls; let i = index"
+               class="estrella align-items-center justify-content-between">
             <ng-container [formGroupName]="i">
               <p class="rating">{{competencia.value.nombre | titlecase}}</p>
               <div class="star">
@@ -34,7 +35,9 @@
               </div>
             </ng-container>
           </div>
-          <p *ngIf="seguimientoBancoTalentoForm.invalid"> Debes calificar todas las competencias seti</p>
+          <p class="text-danger" *ngIf="seguimientoBancoTalentoForm.invalid && seguimientoBancoTalentoForm.dirty">
+            Debes calificar todas las competencias seti
+          </p>
         </div>
       </div>
 

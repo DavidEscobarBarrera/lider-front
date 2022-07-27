@@ -10,7 +10,6 @@ import { Observable } from 'rxjs';
   styleUrls: ['./talent-table.component.scss']
 })
 export class TalentTableComponent implements OnInit{
-
   icId: string;
   clId: string;
   name: Observable<any>;

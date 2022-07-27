@@ -16,26 +16,26 @@ export class AuthService {
       .pipe(
         tap(value => {
           if (!value.response) {
-            throw new Error('Oops, no token found!')
+            throw new Error('Oops, no token found!');
           }
         })
       )
   }
 
   isLoggedIn(): boolean {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem('token');
     if (!token) {
-      return false
+      return false;
     }
     if (token && this.jwtHelper.isTokenExpired(token)) {
-      localStorage.removeItem('token')
-      return false
+      localStorage.clear();
+      return false;
     }
-    return true
+    return true;
   }
 
   logout() {
-    localStorage.clear()
-    this.router.navigateByUrl('/login')
+    localStorage.clear();
+    this.router.navigateByUrl('/login');
   }
 }
