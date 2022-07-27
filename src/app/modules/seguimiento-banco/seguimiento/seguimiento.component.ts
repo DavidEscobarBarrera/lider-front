@@ -3,7 +3,7 @@ import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 import {debounceTime, switchMap, Observable} from 'rxjs';
 import {FormControl} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
-import {ClientLeader} from '../../../models/leader';
+import {ClientLeader, TalentForSearchBar} from '../../../models/leader';
 import {ClientLeaderService} from '../../../services/client-leader.service';
 import {SetiLeaderInfoService} from '../../../services/seti-leader-info.service';
 
@@ -15,6 +15,8 @@ import {SetiLeaderInfoService} from '../../../services/seti-leader-info.service'
 export class SeguimientoComponent implements OnInit {
   myControl = new FormControl('');
   filteredOptions!: Observable<ClientLeader[]>;
+  myControl2 = new FormControl('');
+  filteredOptions2!: Observable<TalentForSearchBar[]>;
   inClientId!: number;
   visibleLeader = true;
   visibleTalent = true;
@@ -34,10 +36,21 @@ export class SeguimientoComponent implements OnInit {
           distinctUntilChanged(),
           switchMap(name => this.filter(name))
         )
+      this.filteredOptions2 = this.myControl2.valueChanges
+        .pipe(
+          startWith(''),
+          debounceTime(400),
+          distinctUntilChanged(),
+          switchMap(name => this.filter2(name))
+        )
     } catch (e) {}
   }
 
   displayFn(user: ClientLeader): string {
+    return user && user.nombre ? user.nombre : '';
+  }
+
+  displayFn2(user: TalentForSearchBar):string {
     return user && user.nombre ? user.nombre : '';
   }
 
@@ -47,7 +60,17 @@ export class SeguimientoComponent implements OnInit {
       .pipe(map(response => response.filter(option => option.nombre.toLowerCase().includes(filterValue))));
   }
 
+  filter2(name: string): Observable<TalentForSearchBar[]> {
+    const filterValue = name.toString().toLowerCase();
+    return this.clientLeaderService.getTalentsForSearchBar(this.inClientId.toString())
+      .pipe(map(response => response.filter(option => option.nombre.toLowerCase().includes(filterValue))))
+  }
+
   selectLeader(value: any) {
     this.router.navigate(['lider', this.inClientId, value], {relativeTo: this.activatedRoute});
+  }
+
+  selectTalent(value: any) {
+    this.router.navigate(['talento', value], {relativeTo: this.activatedRoute});
   }
 }

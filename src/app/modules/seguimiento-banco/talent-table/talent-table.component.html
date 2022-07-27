@@ -4,37 +4,39 @@
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" aria-describedby="Table">
     <ng-container matColumnDef="color">
       <th class="colors" mat-header-cell *matHeaderCellDef></th>
-      <td [ngStyle]="{'background-color': element.psegu_color == 'R' ? 'red' : 'white'}"
+      <td [ngStyle]="{'background-color': element.comp_tiposatisfaccion === 'Bajo' ? 'red' :
+       (element.comp_tiposatisfaccion === 'Medio' ? 'Yellow' :
+       (element.comp_tiposatisfaccion === 'Alto' ? 'green' : 'white'))}"
           mat-cell *matCellDef="let element"></td>
     </ng-container>
     <ng-container matColumnDef="nombre">
       <th mat-header-cell *matHeaderCellDef> Nombre</th>
       <td mat-cell class="left" *matCellDef="let element">
-        <span [routerLink]="['/seguimiento-banco/talento', element.ptale_id]" class="blue">{{element.nombre}}</span>
+        <span [routerLink]="['/seguimiento-banco/talento', element.tale_id]" class="blue">{{element.nombre}}</span>
       </td>
     </ng-container>
     <ng-container matColumnDef="documento">
       <th mat-header-cell *matHeaderCellDef> Documento</th>
-      <td mat-cell *matCellDef="let element">{{element.ptale_documentoidentidad}} </td>
+      <td mat-cell *matCellDef="let element">{{element.tale_documentoidentidad}} </td>
     </ng-container>
     <ng-container matColumnDef="satisfacción">
       <th mat-header-cell *matHeaderCellDef> Satisfacción</th>
       <td mat-cell *matCellDef="let element">
-        {{element.psegu_tiposatisfaccion === null ? 'Sin evaluación' : element.psegu_tiposatisfaccion}}
+        {{element.comp_tiposatisfaccion === null ? 'Sin evaluación' : element.comp_tiposatisfaccion}}
       </td>
     </ng-container>
     <ng-container matColumnDef="desempeño">
       <th mat-header-cell *matHeaderCellDef> Desempeño</th>
       <td mat-cell *matCellDef="let element">
-        {{element.psegu_calificaciondesempeno === null ? 'Sin evaluación' : element.psegu_calificaciondesempeno}}
+        {{element.comp_calificaciondesempeno === null ? 'Sin evaluación' : element.comp_calificaciondesempeno}}
       </td>
     </ng-container>
     <ng-container matColumnDef="ultimo seguimiento">
       <th mat-header-cell *matHeaderCellDef> Ultimo seguimiento</th>
       <td mat-cell *matCellDef="let element">
-          <span
+          <span *ngIf="element.segu_fecha !== null"
             routerLink="/under-construction" class="blue">
-            {{element.psegu_fecha === null ? 'Sin evaluación' : element.psegu_fecha | date : 'longDate'}}
+            {{ element.segu_fecha | date : 'longDate'}}
           </span>
       </td>
     </ng-container>

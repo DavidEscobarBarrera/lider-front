@@ -1,32 +1,32 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http'
-
-export interface seguimiento {
-  tale_id: number;
-  comp_comunicacion: number;
-  comp_trabajoenequipo: number;
-  comp_orientacionalservicio: number;
-  comp_orientacionallogro: number;
-  comp_conocimientotecnico: number;
-  opme_habilidadblanda: string;
-  opme_habilidadtecnica: string;
-  reco_habilidadblanda: string;
-  reco_habilidadtecnica: string;
-}
-
+import {TalentInfoResponse} from "../models/leader";
+import {map} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SeguimientoTalentoBancoService {
-  url: string = 'http://localhost:3005/v1/';
-  constructor(private http: HttpClient) { }
+  url = 'http://localhost:3005/v1/';
 
-  seguimientoBanco (seguimiento: seguimiento) {
-    return this.http.post(this.url + 'prueba/13', seguimiento)
+  constructor(private http: HttpClient) {
   }
 
-  getCompetencias () {
+  seguimientoBanco(seguimiento: any, registeredBy: number) {
+    return this.http.post(`${this.url}tracking/${registeredBy}`, seguimiento);
+  }
+
+  getCompetencias() {
     return this.http.get(this.url + 'gettypecompetences');
+  }
+
+  getTalentInfoById(id: string) {
+    return this.http.get<TalentInfoResponse>(`http://localhost:3005/v1/gettalentsbyid/${id}`)
+      .pipe(map(value => ({
+        nombre: value.data[0].nombre,
+        cargo: value.data[0].tale_cargo,
+        documento: value.data[0].tale_documentoidentidad,
+        lider: value.data[0].lider
+      })))
   }
 }
