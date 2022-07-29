@@ -13,12 +13,14 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {UltimoSeguimientoComponent} from './ultimo-seguimiento/ultimo-seguimiento.component';
 
 @NgModule({
   declarations: [
     SeguimientoComponent,
     TalentTableComponent,
-    SeguimientoBancoTalentoComponent
+    SeguimientoBancoTalentoComponent,
+    UltimoSeguimientoComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +32,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     MatIconModule,
     MatTableModule,
     MatButtonModule,
-    NgbModule
+    NgbModule,
   ]
 })
 export class SeguimientoBancoModule {
