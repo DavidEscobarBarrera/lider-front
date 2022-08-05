@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
+import {ClientLeader, TalentForSearchBar} from '../../../models/leader';
 import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 import {debounceTime, switchMap, Observable} from 'rxjs';
 import {FormControl} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
-import {ClientLeader, TalentForSearchBar} from '../../../models/leader';
 import {ClientLeaderService} from '../../../services/client-leader.service';
 import {SetiLeaderInfoService} from '../../../services/seti-leader-info.service';
 
@@ -28,7 +28,7 @@ export class SeguimientoComponent implements OnInit {
 
   ngOnInit() {
     try {
-      this.inClientId = this.setiLeaderService.userData.plise_id;
+      this.inClientId = this.setiLeaderService.userData.lise_id;
       this.filteredOptions = this.myControl.valueChanges
         .pipe(
           startWith(''),
