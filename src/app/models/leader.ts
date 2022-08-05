@@ -1,14 +1,13 @@
 export interface LeaderResponse {
-  status: number
-  response: Leader
+  status: number;
+  response: Leader;
 }
-
 export interface Leader {
-  nombre: string
-  plise_cargo: string
-  pusua_id: number
-  plise_id: number
-  pclie_nombre: string
+  nombre: string;
+  lise_cargo: string;
+  pusua_id: number;
+  lise_id: number;
+  clie_nombre: string;
 }
 
 export interface ClientLeaderResponse {
