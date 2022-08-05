@@ -35,7 +35,7 @@
       <th mat-header-cell *matHeaderCellDef> Ultimo seguimiento</th>
       <td mat-cell *matCellDef="let element">
           <span *ngIf="element.segu_fecha !== null"
-            routerLink="../../../ultimo-seguimiento/5" class="blue">
+            [routerLink]="['../../../ultimo-seguimiento', element.tale_id]" class="blue">
             {{ element.segu_fecha | date : 'longDate'}}
           </span>
       </td>
