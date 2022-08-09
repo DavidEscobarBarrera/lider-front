@@ -14,7 +14,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {UltimoSeguimientoComponent} from './ultimo-seguimiento/ultimo-seguimiento.component';
-
+import { NgChartsModule } from 'ng2-charts';
 @NgModule({
   declarations: [
     SeguimientoComponent,
@@ -33,6 +33,7 @@ import {UltimoSeguimientoComponent} from './ultimo-seguimiento/ultimo-seguimient
     MatTableModule,
     MatButtonModule,
     NgbModule,
+    NgChartsModule
   ]
 })
 export class SeguimientoBancoModule {
