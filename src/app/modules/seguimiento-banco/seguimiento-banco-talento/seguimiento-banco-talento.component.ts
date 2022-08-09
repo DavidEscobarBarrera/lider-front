@@ -15,7 +15,7 @@ export class SeguimientoBancoTalentoComponent implements OnInit {
   fecha: Date = new Date;
   inSubmission = false;
   seguimientoBancoTalentoForm!: FormGroup;
-  tale: any;
+  tale_id: any;
   pusua_id!: number;
   talentInfo!: Observable<any>;
 
@@ -34,10 +34,10 @@ export class SeguimientoBancoTalentoComponent implements OnInit {
 
   ngOnInit() {
     this.pusua_id = this.setiLeaderService.userData.pusua_id;
-    this.route.paramMap.subscribe(value => this.tale = value.get('id'));
-    this.talentInfo = this.seguimientoTalentoBancoService.getTalentInfoById(this.tale);
+    this.route.paramMap.subscribe(value => this.tale_id = value.get('id'));
+    this.talentInfo = this.seguimientoTalentoBancoService.getTalentInfoById(this.tale_id);
     this.seguimientoBancoTalentoForm = new FormGroup({
-      tale_id: new FormControl(this.tale),
+      tale_id: new FormControl(this.tale_id),
       competencias: new FormArray([]),
       opme_habilidadblanda: this.opme_habilidadBlanda,
       opme_habilidadtecnica: this.opme_habilidadTecnica,
@@ -78,8 +78,7 @@ export class SeguimientoBancoTalentoComponent implements OnInit {
     this.inSubmission = true;
     this.seguimientoTalentoBancoService.seguimientoBanco(this.seguimientoBancoTalentoForm.value, this.pusua_id)
       .subscribe({
-        next: () => this.location.back(),
-        error: err => console.log(err)
+        next: () => this.location.back()
       })
   }
 }
