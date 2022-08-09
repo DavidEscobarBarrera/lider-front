@@ -5,3 +5,21 @@ p {
 .Btn {
   margin-top: 4.5rem;
 }
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.info {
+  display: none;
+}
+
+@media (min-width: 1000px) {
+  .info {
+    display: flex;
+    justify-content: space-between;
+  }
+}

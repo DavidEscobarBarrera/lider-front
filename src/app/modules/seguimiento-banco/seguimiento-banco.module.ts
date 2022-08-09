@@ -14,6 +14,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {UltimoSeguimientoComponent} from './ultimo-seguimiento/ultimo-seguimiento.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {UltimoSeguimientoComponent} from './ultimo-seguimiento/ultimo-seguimient
     MatTableModule,
     MatButtonModule,
     NgbModule,
+    MatProgressSpinnerModule
   ]
 })
 export class SeguimientoBancoModule {
