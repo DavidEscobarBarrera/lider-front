@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 import {TalentInfoResponse} from '../models/leader';
 import {map, pluck} from 'rxjs';
-import {UltimoSeguimiento} from '../models/seguimiento';
+import { UltimoSeguimiento } from '../models/seguimiento';
 
 @Injectable({
   providedIn: 'root'
