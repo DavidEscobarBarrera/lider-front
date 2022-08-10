@@ -14,18 +14,15 @@ import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {UltimoSeguimientoComponent} from './ultimo-seguimiento/ultimo-seguimiento.component';
-
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-
-
-import { NgChartsModule } from 'ng2-charts';
+import {NgChartsModule} from 'ng2-charts';
 
 @NgModule({
   declarations: [
     SeguimientoComponent,
     TalentTableComponent,
     SeguimientoBancoTalentoComponent,
-    UltimoSeguimientoComponent,
+    UltimoSeguimientoComponent
   ],
   imports: [
     CommonModule,
