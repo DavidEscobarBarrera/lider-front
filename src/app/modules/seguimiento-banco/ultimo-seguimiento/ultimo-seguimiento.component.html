@@ -18,22 +18,30 @@
       <div class="row">
         <div class="col-lg-6 d-flex flex-column" formGroupName = "reconocimientos">
           <h2 class="color mt-0 mb-4">Reconocimientos</h2>
-          <div class="edit">
-            <mat-form-field appearance="outline">
-              <mat-label class="mt-4">Habilidades blandas</mat-label>
-              <input formControlName="reco_habilidadblanda" autocomplete="off" matInput>
-            </mat-form-field>
-            <mat-icon class="editor" (click)="enableInput(form.get('reconocimientos'),'reco_habilidadblanda')">{{form.get('reconocimientos')?.get('reco_habilidadblanda')?.status == 'DISABLED' ? 'edit': 'save'}}</mat-icon>
-            <mat-icon (click)="cancelInfo(form.get('reconocimientos'),'reco_habilidadblanda')" *ngIf="form.get('reconocimientos')?.get('reco_habilidadblanda')?.value != form.get('reconocimientos')?.get('envio')?.get('reco_habilidadblanda')?.value">cancel</mat-icon>
-          </div>
-          <div class="edit">
-            <mat-form-field appearance="outline">
-              <mat-label>Habilidades técnicas</mat-label>
-              <input formControlName="reco_habilidadtecnica"  autocomplete="off" matInput>
-            </mat-form-field>
-            <mat-icon class="editor" (click)="enableInput(form.get('reconocimientos'),'reco_habilidadtecnica')">{{form.get('reconocimientos')?.get('reco_habilidadtecnica')?.status == 'DISABLED' ? 'edit' : 'save'}}</mat-icon>
-            <mat-icon (click)="cancelInfo(form.get('reconocimientos'),'reco_habilidadtecnica')" *ngIf="form.get('reconocimientos')?.get('reco_habilidadtecnica')?.value  != form.get('reconocimientos')?.get('envio')?.get('reco_habilidadtecnica')?.value">cancel</mat-icon>
-          </div>
+            <div class="row">
+                <div class="col-10 d-flex flex-column">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Habilidades blandas</mat-label>
+                    <input formControlName="reco_habilidadblanda" autocomplete="off" matInput>
+                  </mat-form-field>
+                </div>
+                <div class="col-2 mt-3">
+                  <mat-icon (click)="enableInput(form.get('reconocimientos'),'reco_habilidadblanda')">{{form.get('reconocimientos')?.get('reco_habilidadblanda')?.status == 'DISABLED' ? 'edit': 'save'}}</mat-icon>
+                  <mat-icon (click)="cancelInfo(form.get('reconocimientos'),'reco_habilidadblanda')" *ngIf="form.get('reconocimientos')?.get('reco_habilidadblanda')?.value != form.get('reconocimientos')?.get('envio')?.get('reco_habilidadblanda')?.value">cancel</mat-icon>
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-10 d-flex flex-column">
+                <mat-form-field appearance="outline">
+                  <mat-label>Habilidades técnicas</mat-label>
+                  <input formControlName="reco_habilidadtecnica"  autocomplete="off" matInput>
+                </mat-form-field>
+              </div>
+              <div class="col-2 mt-3">
+                <mat-icon (click)="enableInput(form.get('reconocimientos'),'reco_habilidadtecnica')">{{form.get('reconocimientos')?.get('reco_habilidadtecnica')?.status == 'DISABLED' ? 'edit' : 'save'}}</mat-icon>
+                <mat-icon (click)="cancelInfo(form.get('reconocimientos'),'reco_habilidadtecnica')" *ngIf="form.get('reconocimientos')?.get('reco_habilidadtecnica')?.value  != form.get('reconocimientos')?.get('envio')?.get('reco_habilidadtecnica')?.value">cancel</mat-icon>
+              </div>
+            </div>
       </div>
         <div class="col-lg-6 ">
           <h2 class="color mt-0 mb-4">Competencias SETI</h2>
@@ -42,20 +50,29 @@
       <div class="row">
         <div class="col-lg-6 d-flex flex-column" formGroupName = "opcionMejora">
           <h2 class="color mt-0 mb-4">Oportunidades de mejora</h2>
-          <div class="edit">
-            <mat-form-field appearance="outline">
-              <mat-label class="mt-4">Habilidades blandas</mat-label>
-              <input formControlName="opme_habilidadblanda" autocomplete="off" matInput>
-            </mat-form-field>
-            <mat-icon class="editor" (click)="enableInput(form.get('opcionMejora'),'opme_habilidadblanda')">{{form.get('opcionMejora')?.get('opme_habilidadblanda')?.status == 'DISABLED' ? 'edit': 'save'}}</mat-icon>
-            <mat-icon class="editor" (click)="cancelInfo(form.get('opcionMejora'),'opme_habilidadblanda')" *ngIf="form.get('opcionMejora')?.get('opme_habilidadblanda')?.value != form.get('opcionMejora')?.get('envio')?.get('opme_habilidadblanda')?.value">cancel</mat-icon>
-            <div class="row">
+
+          <div class="row">
+            <div class="col-10 d-flex flex-column">
+              <mat-form-field appearance="outline">
+                <mat-label class="mt-4">Habilidades blandas</mat-label>
+                <input formControlName="opme_habilidadblanda" autocomplete="off" matInput>
+              </mat-form-field>
+            </div>
+            <div class="col-2 mt-3">
+              <mat-icon (click)="cancelInfo(form.get('opcionMejora'),'opme_habilidadblanda')" *ngIf="form.get('opcionMejora')?.get('opme_habilidadblanda')?.value != form.get('opcionMejora')?.get('envio')?.get('opme_habilidadblanda')?.value">cancel</mat-icon>
+              <mat-icon (click)="enableInput(form.get('opcionMejora'),'opme_habilidadblanda')">{{form.get('opcionMejora')?.get('opme_habilidadblanda')?.status == 'DISABLED' ? 'edit': 'save'}}</mat-icon>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-10 d-flex flex-column">
               <mat-form-field appearance="outline">
                 <mat-label>Habilidades técnicas</mat-label>
                 <input formControlName="opme_habilidadtecnica" autocomplete="off" matInput>
               </mat-form-field>
-              <mat-icon class="editor" (click)="enableInput(form.get('opcionMejora'),'opme_habilidadtecnica')">{{form.get('opcionMejora')?.get('opme_habilidadtecnica')?.status == 'DISABLED' ? 'edit':'save'}}</mat-icon>
-              <mat-icon class="editor" (click)="cancelInfo(form.get('opcionMejora'),'opme_habilidadtecnica')" *ngIf="form.get('opcionMejora')?.get('opme_habilidadtecnica')?.value != form.get('opcionMejora')?.get('envio')?.get('opme_habilidadtecnica')?.value">cancel</mat-icon>
+            </div>
+            <div class="col-2 mt-3">
+              <mat-icon (click)="enableInput(form.get('opcionMejora'),'opme_habilidadtecnica')">{{form.get('opcionMejora')?.get('opme_habilidadtecnica')?.status == 'DISABLED' ? 'edit':'save'}}</mat-icon>
+              <mat-icon (click)="cancelInfo(form.get('opcionMejora'),'opme_habilidadtecnica')" *ngIf="form.get('opcionMejora')?.get('opme_habilidadtecnica')?.value != form.get('opcionMejora')?.get('envio')?.get('opme_habilidadtecnica')?.value">cancel</mat-icon>
             </div>
           </div>
         </div>
