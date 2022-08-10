@@ -59,8 +59,8 @@
               </mat-form-field>
             </div>
             <div class="col-2 mt-3">
-              <mat-icon (click)="cancelInfo(form.get('opcionMejora'),'opme_habilidadblanda')" *ngIf="form.get('opcionMejora')?.get('opme_habilidadblanda')?.value != form.get('opcionMejora')?.get('envio')?.get('opme_habilidadblanda')?.value">cancel</mat-icon>
               <mat-icon (click)="enableInput(form.get('opcionMejora'),'opme_habilidadblanda')">{{form.get('opcionMejora')?.get('opme_habilidadblanda')?.status == 'DISABLED' ? 'edit': 'save'}}</mat-icon>
+              <mat-icon (click)="cancelInfo(form.get('opcionMejora'),'opme_habilidadblanda')" *ngIf="form.get('opcionMejora')?.get('opme_habilidadblanda')?.value != form.get('opcionMejora')?.get('envio')?.get('opme_habilidadblanda')?.value">cancel</mat-icon>
             </div>
           </div>
           <div class="row">
