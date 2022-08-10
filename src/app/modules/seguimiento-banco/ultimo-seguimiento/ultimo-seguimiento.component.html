@@ -7,10 +7,10 @@
   <div class="d-flex flex-column ">
     <p>Lider: {{info.lider}}</p>
     <p>Ultimo seguimiento</p>
-    <p>{{(data | async)?.segu_fecha | date : 'medium'}}</p>
+    <p>{{(formData | async)?.segu_fecha | date : 'medium'}}</p>
   </div>
 </div>
-<div *ngIf="data  | async; else loading">
+<div *ngIf="formData  | async; else loading">
   <h1 class="color text-center mt-3 mb-4">Seguimiento Banco</h1>
   <div class="container">
     <form [formGroup]="form" (ngSubmit)="submit()" class="mb-5">
@@ -29,10 +29,9 @@
         <div class="col-lg-6 ">
           <h2 class="color mt-0 mb-4">Competencias SETI</h2>
           <div class=" w-75 center ">
-            <canvas  baseChart
+            <canvas baseChart
               [data]="barChartData"
               [options]="barChartOptions"
-              [plugins]="barChartPlugins"
               [legend]="barChartLegend"
               [type]="'bar'">
             </canvas>

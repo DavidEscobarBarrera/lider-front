@@ -1,11 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {Observable, shareReplay, tap} from 'rxjs';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {lastValueFrom, Observable, shareReplay, tap} from 'rxjs';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common'
-import { SeguimientoTalentoBancoService} from '../../../services/seguimiento-talento-banco.service';
-import { ChartConfiguration } from 'chart.js';
-
+import {SeguimientoTalentoBancoService} from '../../../services/seguimiento-talento-banco.service';
+import {ChartConfiguration} from 'chart.js';
+import {map} from 'rxjs/operators';
+import {BaseChartDirective} from 'ng2-charts';
 
 @Component({
   selector: 'app-ultimo-seguimiento',
@@ -15,38 +16,57 @@ import { ChartConfiguration } from 'chart.js';
 export class UltimoSeguimientoComponent implements OnInit {
   form!: FormGroup;
   data!: Observable<any>;
-
-
+  formData!: Observable<any>
   talentInfo!: Observable<any>;
   tale_id: any;
+  barChartLegend = true;
+  @ViewChild(BaseChartDirective) chart!: BaseChartDirective;
+
+  barChartData: ChartConfiguration<'bar'>['data'] = {
+    labels: [
+      'Comunicación',
+      'Trabajo en equipo',
+      'Conocimiento técnico',
+      'Orientación al logro',
+      'Orientación al servicio'
+    ],
+    datasets: [
+      {
+        data: [],
+        label: 'Competencias SETI',
+        hoverBackgroundColor: ['rgba(194,56,47,0.8)'],
+        barThickness: 25
+      }
+    ]
+  };
+
+  barChartOptions: ChartConfiguration<'bar'>['options'] = {
+    responsive: true,
+    backgroundColor: '#C2382F',
+    scales: {
+      y: {
+        max: 5
+      }
+    }
+  };
 
   constructor(private seguimientoTalentoService: SeguimientoTalentoBancoService,
               private fb: FormBuilder,
               private route: ActivatedRoute,
-              private location: Location) {}
+              private location: Location) {
+  }
 
-  public barChartLegend = true;
-  public barChartPlugins = [];
-
-  public barChartData: ChartConfiguration<'bar'>['data'] = {
-    labels: [ 'Comunicación', 'Trabajo en equipo', 'Orientación al servicio', 
-            'Orientación al logro', 'Conocimiento técnico' ],
-    datasets: [
-      { data: [ 1, 2, 2, 3, 5 ], label: 'Competencias SETI' ,
-      hoverBackgroundColor: ['rgba(194,56,47,0.8)']},
-      
-    ]
-  };
-
-  public barChartOptions: ChartConfiguration<'bar'>['options'] = {
-    responsive: true,
-    backgroundColor: '#C2382F',
-    borderColor: 'white',
-  };
-
-  ngOnInit(): void {
+  async ngOnInit() {
     this.route.paramMap.subscribe(value => this.tale_id = value.get('id'));
     this.talentInfo = this.seguimientoTalentoService.getTalentInfoById(this.tale_id);
+    this.data = this.seguimientoTalentoService.loadLastEvaluation(this.tale_id)
+      .pipe(shareReplay())
+
+    this.barChartData.datasets[0].data = await lastValueFrom(
+      this.data
+        .pipe(map(value => Object.values(value.competencias)))
+    )
+
     this.form = this.fb.group({
       reco_habilidadblanda: [''],
       reco_habilidadtecnica: [''],
@@ -54,16 +74,16 @@ export class UltimoSeguimientoComponent implements OnInit {
       opme_habilidadtecnica: ['']
     })
 
-    this.data = this.seguimientoTalentoService.loadLastEvaluation(this.tale_id)
+    this.formData = this.data
       .pipe(
-        tap(data => this.form.patchValue(data)),
-        shareReplay()
+        tap(data => this.form.patchValue(data))
       )
   }
 
   back(): void {
     this.location.back()
   }
+
   submit() {
     console.log(this.form.value)
   }
