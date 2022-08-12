@@ -1,24 +1,49 @@
-  <h1 class="text-center mt-5">Bienvenidos a LíderApp.</h1>
-  <div class="container mb-5 description">
-    <p class="text-center">
-      Desde acá podrá realizar la gestión del seguimiento de los talentos asignados al cliente
-      <span class="fw-bold">{{client?.clie_nombre}}</span> y explorar las distintas categorías.
-    </p>
+<h1 class="text-center mt-5">Bienvenidos a LíderApp.</h1>
+<div class="container mb-5 description">
+  <p class="text-center">
+    Desde acá podrá realizar la gestión del seguimiento de los talentos asignados al cliente
+    <span class="fw-bold">{{client?.clie_nombre}}</span> y explorar las distintas categorías.
+  </p>
+</div>
+<div class="d-flex justify-content-center align-items-center flex-column gap-5 direction content">
+  <div class="d-flex justify-content-center align-items-center flex-column">
+    <img routerLink="/under-construction" class="cursor" src="assets/images/seguimientoTalento.png"
+         alt="Seguimiento Talento">
+    <h2 class="text-center mt-3 fs-4">Seguimiento <br> Talentos</h2>
   </div>
-  <div class="d-flex justify-content-center align-items-center flex-column gap-5 direction content">
-    <div class="d-flex justify-content-center align-items-center flex-column">
-      <img routerLink="/under-construction" class="cursor" src="assets/images/seguimientoTalento.png"
-           alt="Seguimiento Talento">
-      <h2 class="text-center mt-3 fs-4">Seguimiento <br> Talentos</h2>
-    </div>
-    <div class="d-flex justify-content-center align-items-center flex-column">
-      <img routerLink="/seguimiento-banco" class="cursor" src="assets/images/seguimientoBanco.png"
-           alt="Seguimiento Banco">
-      <h2 class="text-center mt-3 fs-4">Seguimiento <br> Banco</h2>
-    </div>
-    <div class="d-flex justify-content-center align-items-center flex-column">
-      <img routerLink="/under-construction" class="cursor" src="assets/images/crearLíderBanco.png"
-           alt="Crear Líder Banco">
-      <h2 class="text-center mt-3 fs-4">Crear Líder <br> Banco</h2>
-    </div>
+  <div class="d-flex justify-content-center align-items-center flex-column">
+    <img routerLink="/seguimiento-banco" class="cursor" src="assets/images/seguimientoBanco.png"
+         alt="Seguimiento Banco">
+    <h2 class="text-center mt-3 fs-4">Seguimiento <br> Banco</h2>
   </div>
+  <div class="d-flex justify-content-center align-items-center flex-column">
+    <img routerLink="/under-construction" class="cursor" src="assets/images/crearLíderBanco.png"
+         alt="Crear Líder Banco">
+    <h2 class="text-center mt-3 fs-4">Crear Líder <br> Banco</h2>
+  </div>
+</div>
+<ng-template #content let-c="close">
+  <div class="modal-header text-center">
+    <h2 class="modal-title w-100">Cambiar Contraseña</h2>
+  </div>
+  <form [formGroup]="changePasswordForm" (ngSubmit)="submit()">
+    <div class="modal-body">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Contraseña actual</mat-label>
+        <input type="password" formControlName="currentPassword" autocomplete="off" matInput>
+      </mat-form-field>
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Nueva contraseña</mat-label>
+        <input type="password" formControlName="password" autocomplete="off" matInput>
+      </mat-form-field>
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Confirme su contraseña</mat-label>
+        <input type="password" formControlName="passwordRepeated" autocomplete="off" matInput>
+      </mat-form-field>
+    </div>
+    <div class="modal-footer justify-content-center gap-3">
+      <button type="button" mat-raised-button>Limpiar</button>
+      <button type="submit" (click)="c('Save click')" mat-raised-button color="warn">Guardar</button>
+    </div>
+  </form>
+</ng-template>
