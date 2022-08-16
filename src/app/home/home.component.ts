@@ -39,7 +39,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.open(this.content)
+    setTimeout(() => {
+      if (!this.client.cambioContrasena) {
+        this.open(this.content)
+      }
+    },2000)
   }
 
   open(content: any) {
