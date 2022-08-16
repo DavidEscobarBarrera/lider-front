@@ -30,20 +30,41 @@
     <div class="modal-body">
       <mat-form-field class="w-100" appearance="outline">
         <mat-label>Contraseña actual</mat-label>
-        <input type="password" formControlName="currentPassword" autocomplete="off" matInput>
+        <input [type]="hide ? 'password' : 'text'" formControlName="currentPassword" autocomplete="off" matInput>
+        <button type="button" mat-icon-button matSuffix (click)="hide = !hide"
+                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+          <mat-error *ngIf="currentPassword.errors?.['required']">La contraseña actual es requerida.</mat-error>
       </mat-form-field>
       <mat-form-field class="w-100" appearance="outline">
         <mat-label>Nueva contraseña</mat-label>
-        <input type="password" formControlName="password" autocomplete="off" matInput>
+        <input [type]="hide2 ? 'password' : 'text'" formControlName="password" autocomplete="off" matInput>
+        <button type="button" mat-icon-button matSuffix (click)="hide2 = !hide2"
+                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2">
+          <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="newPassword.errors?.['required']">Campo requerido.</mat-error>
+        <mat-error *ngIf="newPassword.errors?.['pattern']">
+          La contraseña debe tener al menos 10 caracteres, 1 mayúscula y 1 número.
+        </mat-error>
       </mat-form-field>
       <mat-form-field class="w-100" appearance="outline">
         <mat-label>Confirme su contraseña</mat-label>
-        <input type="password" formControlName="passwordRepeated" autocomplete="off" matInput>
+        <input [type]="hide3 ? 'password' : 'text'" formControlName="passwordRepeated" autocomplete="off" matInput>
+        <button type="button" mat-icon-button matSuffix (click)="hide3 = !hide3"
+                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide3">
+          <mat-icon>{{hide3 ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="confirmNewPassword.errors?.['required']">Campo requerido.</mat-error>
+        <mat-error *ngIf="confirmNewPassword.errors?.['noMatch']">Las contraseñas no coinciden.</mat-error>
       </mat-form-field>
     </div>
     <div class="modal-footer justify-content-center gap-3">
       <button type="button" mat-raised-button>Limpiar</button>
-      <button type="submit" (click)="c('Save click')" mat-raised-button color="warn">Guardar</button>
+      <button [disabled]="!changePasswordForm.valid" type="submit" (click)="c('Save click')"
+              mat-raised-button color="warn">Guardar
+      </button>
     </div>
   </form>
 </ng-template>

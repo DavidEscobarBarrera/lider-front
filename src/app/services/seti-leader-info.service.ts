@@ -6,6 +6,7 @@ import jwt_decode from 'jwt-decode';
 @Injectable({
   providedIn: 'root'
 })
+
 export class SetiLeaderInfoService {
   user: EventEmitter<any> = new EventEmitter();
   userData: any;
@@ -35,4 +36,8 @@ export class SetiLeaderInfoService {
   }
 
   inClientId = JSON.parse(localStorage.getItem('user') || '{}');
+
+  updatePassword(id: any, changePassword: any) {
+    return this.http.put(`http://localhost:3003/v1/registerfirstpassword/${id}`, changePassword)
+  }
 }

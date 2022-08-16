@@ -99,7 +99,6 @@ export class UltimoSeguimientoComponent implements OnInit {
       .pipe(
         tap(data => {
           this.segu_id = data.segu_id;
-          console.log(data)
           this.form.get('reconocimientos')?.get('envio')?.patchValue(data);
           this.form.get('opcionMejora')?.get('envio')?.patchValue(data);
           this.form.get('reconocimientos')?.patchValue(data);
@@ -150,14 +149,14 @@ export class UltimoSeguimientoComponent implements OnInit {
       rechb: this.form.value?.reconocimientos?.envio?.reco_habilidadblanda,
       recht: this.form.value?.reconocimientos?.envio?.reco_habilidadtecnica,
       opmhb: this.form.value?.opcionMejora?.envio?.opme_habilidadblanda,
-      opmht: this.form.value?.opcionMejora?.envio?.opme_habilidadtecnica,
+      opmht: this.form.value?.opcionMejora?.envio?.opme_habilidadtecnica
     }
     const id = this.segu_id;
     this.seguimientoTalentoService.UpdateEvaluation(id, idSeguimiento)
       .subscribe({
           next: () => this.success = true,
           complete: () => setTimeout(() => this.location.back(), 2500)
-        },
+        }
       )
   }
 }
