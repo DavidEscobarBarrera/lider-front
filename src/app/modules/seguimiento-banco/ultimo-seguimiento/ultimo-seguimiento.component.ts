@@ -7,12 +7,14 @@ import {ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common'
 import {SeguimientoTalentoBancoService} from '../../../services/seguimiento-talento-banco.service';
 import {BaseChartDirective} from 'ng2-charts';
+import {UpdateSeguimiento} from '../../../models/seguimiento';
 
 @Component({
   selector: 'app-ultimo-seguimiento',
   templateUrl: './ultimo-seguimiento.component.html',
   styleUrls: ['./ultimo-seguimiento.component.scss']
 })
+
 export class UltimoSeguimientoComponent implements OnInit {
   form!: FormGroup;
   data!: Observable<any>;
@@ -20,7 +22,9 @@ export class UltimoSeguimientoComponent implements OnInit {
   talentInfo!: Observable<any>;
   tale_id: any;
   barChartLegend = true;
-  contadorSave!: any
+  contadorSave!: any;
+  segu_id: any;
+  success = false;
   @ViewChild(BaseChartDirective) chart!: BaseChartDirective;
 
   barChartData: ChartConfiguration<'bar'>['data'] = {
@@ -70,10 +74,6 @@ export class UltimoSeguimientoComponent implements OnInit {
     )
 
     this.form = this.fb.group({
-      reco_habilidadblanda: [''],
-      reco_habilidadtecnica: [''],
-      opme_habilidadblanda: [''],
-      opme_habilidadtecnica: [''],
       actualizado: [false],
       reconocimientos: this.fb.group({
         actualizado: [false],
@@ -83,7 +83,6 @@ export class UltimoSeguimientoComponent implements OnInit {
           reco_habilidadblanda: [{value: ''}],
           reco_habilidadtecnica: [{value: ''}]
         })
-
       }),
       opcionMejora: this.fb.group({
         actualizado: [false],
@@ -99,6 +98,8 @@ export class UltimoSeguimientoComponent implements OnInit {
     this.formData = this.data
       .pipe(
         tap(data => {
+          this.segu_id = data.segu_id;
+          console.log(data)
           this.form.get('reconocimientos')?.get('envio')?.patchValue(data);
           this.form.get('opcionMejora')?.get('envio')?.patchValue(data);
           this.form.get('reconocimientos')?.patchValue(data);
@@ -111,17 +112,12 @@ export class UltimoSeguimientoComponent implements OnInit {
     this.location.back()
   }
 
-  submit() {
-    console.log(this.form.value)
-  }
-
   enableInput(ControlPadre: any, VariableControl: string) {
     if (ControlPadre.get(VariableControl).status === 'DISABLED') {
       if (this.contadorSave === 0) {
         ControlPadre.get(VariableControl).enable()
         this.contadorSave = 1
       }
-
     } else {
       this.saveInput(ControlPadre, VariableControl)
       ControlPadre.get(VariableControl).disable()
@@ -139,5 +135,29 @@ export class UltimoSeguimientoComponent implements OnInit {
     ControlPadre.get(VariableControl).setValue(ControlPadre.get('envio').get(VariableControl).value)
     ControlPadre.get(VariableControl).disable()
     this.contadorSave = 0;
+  }
+
+  updateEvaluation() {
+    this.form.get('reconocimientos')?.enable()
+    this.form.get('opcionMejora')?.enable()
+    if (!this.form.get('reconocimientos')?.get('actualizado')?.value) {
+      this.form.get('reconocimientos')?.disable()
+    }
+    if (!this.form.get('opcionMejora')?.get('actualizado')?.value) {
+      this.form.get('opcionMejora')?.disable()
+    }
+    const idSeguimiento: UpdateSeguimiento = {
+      rechb: this.form.value?.reconocimientos?.envio?.reco_habilidadblanda,
+      recht: this.form.value?.reconocimientos?.envio?.reco_habilidadtecnica,
+      opmhb: this.form.value?.opcionMejora?.envio?.opme_habilidadblanda,
+      opmht: this.form.value?.opcionMejora?.envio?.opme_habilidadtecnica,
+    }
+    const id = this.segu_id;
+    this.seguimientoTalentoService.UpdateEvaluation(id, idSeguimiento)
+      .subscribe({
+          next: () => this.success = true,
+          complete: () => setTimeout(() => this.location.back(), 2500)
+        },
+      )
   }
 }

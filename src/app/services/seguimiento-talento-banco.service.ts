@@ -2,16 +2,16 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 import {TalentInfoResponse} from '../models/leader';
 import {map, pluck} from 'rxjs';
-import {UltimoSeguimiento} from '../models/seguimiento';
+import { UltimoSeguimiento, UpdateSeguimiento } from '../models/seguimiento';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class SeguimientoTalentoBancoService {
   url = 'http://localhost:3005/v1/';
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   seguimientoBanco(seguimiento: any, registeredBy: number) {
     return this.http.post(`${this.url}tracking/${registeredBy}`, seguimiento);
@@ -36,5 +36,9 @@ export class SeguimientoTalentoBancoService {
       .pipe(
         pluck('data')
       )
+  }
+
+  UpdateEvaluation(tale_id: number, idSeguimiento: UpdateSeguimiento){
+    return this.http.patch<UltimoSeguimiento>(`${this.url}updateSeguimiento/${tale_id}`, idSeguimiento)
   }
 }

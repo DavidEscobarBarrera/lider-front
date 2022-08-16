@@ -2,6 +2,7 @@ export interface UltimoSeguimiento {
   status: number;
   data: Data;
 }
+
 export interface Data {
   tale_id: number;
   segu_id: number;
@@ -12,6 +13,7 @@ export interface Data {
   competencias: Competencias;
   segu_fecha: string;
 }
+
 export interface Competencias {
   COMUNICACIÓN: number;
   'TRABAJO EN EQUIPO': number;
@@ -20,4 +22,10 @@ export interface Competencias {
   'ORIENTACIÓN AL SERVICIO': number;
 }
 
+export interface UpdateSeguimiento  {
+  rechb: string;
+  recht: string;
+  opmhb: string;
+  opmht: string;
+}
 
