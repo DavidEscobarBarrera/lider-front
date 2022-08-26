@@ -68,8 +68,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
           localStorage.removeItem('user')
           this.leaderInfoService.getLeaderSetiInfo()
           this.modalReference.close()
-        },
-        error: err => console.log(err)
+        }
       })
   }
 }

@@ -16,7 +16,7 @@ export class SeguimientoBancoTalentoComponent implements OnInit {
   inSubmission = false;
   seguimientoBancoTalentoForm!: FormGroup;
   tale_id: any;
-  pusua_id!: number;
+  usuaid!: number;
   talentInfo!: Observable<any>;
 
   opme_habilidadBlanda = new FormControl('');
@@ -33,16 +33,16 @@ export class SeguimientoBancoTalentoComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.pusua_id = this.setiLeaderService.userData.pusua_id;
+    this.usuaid = this.setiLeaderService.userData.usuaid;
     this.route.paramMap.subscribe(value => this.tale_id = value.get('id'));
     this.talentInfo = this.seguimientoTalentoBancoService.getTalentInfoById(this.tale_id);
     this.seguimientoBancoTalentoForm = new FormGroup({
-      tale_id: new FormControl(this.tale_id),
+      talid: new FormControl(this.tale_id),
       competencias: new FormArray([]),
-      opme_habilidadblanda: this.opme_habilidadBlanda,
-      opme_habilidadtecnica: this.opme_habilidadTecnica,
-      reco_habilidadblanda: this.reco_habilidadBlanda,
-      reco_habilidadtecnica: this.reco_habilidadTecnica
+      opmhabbland: this.opme_habilidadBlanda,
+      opmhabtecni: this.opme_habilidadTecnica,
+      rechabbladn: this.reco_habilidadBlanda,
+      rechabtecni: this.reco_habilidadTecnica
     })
   }
 
@@ -62,8 +62,8 @@ export class SeguimientoBancoTalentoComponent implements OnInit {
     competencias.forEach(competencia => {
       this.competenciasForm.push(
         this.fb.group({
-            tico_id: [competencia.tico_id],
-            nombre: [competencia.tico_nombre],
+            ticoid: [competencia.ticoid],
+            nombre: [competencia.ticonombre],
             valor: [null, [Validators.required, Validators.min(1)]]
           }
         )
@@ -76,7 +76,7 @@ export class SeguimientoBancoTalentoComponent implements OnInit {
       return;
     }
     this.inSubmission = true;
-    this.seguimientoTalentoBancoService.seguimientoBanco(this.seguimientoBancoTalentoForm.value, this.pusua_id)
+    this.seguimientoTalentoBancoService.seguimientoBanco(this.seguimientoBancoTalentoForm.value, this.usuaid)
       .subscribe({
         next: () => this.location.back()
       })

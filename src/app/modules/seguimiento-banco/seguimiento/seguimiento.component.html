@@ -24,8 +24,8 @@
                      [formControl]="myControl2" [matAutocomplete]="auto">
               <mat-autocomplete (optionSelected)="selectTalent($event.option.value)" [displayWith]="displayFn2"
                                 #auto="matAutocomplete">
-                <mat-option *ngFor="let option of filteredOptions2 | async" [value]="option.pusua_id">
-                  {{option.nombre}}
+                <mat-option *ngFor="let option of filteredOptions2 | async" [value]="option.talid">
+                  {{option.talnombres}}
                 </mat-option>
               </mat-autocomplete>
             </mat-form-field>
@@ -59,8 +59,8 @@
                        [formControl]="myControl" [matAutocomplete]="auto">
                 <mat-autocomplete (optionSelected)="selectLeader($event.option.value)" [displayWith]="displayFn"
                                   #auto="matAutocomplete">
-                  <mat-option *ngFor="let option of filteredOptions | async" [value]="option.plide_id">
-                    {{option.nombre}}
+                  <mat-option *ngFor="let option of filteredOptions | async" [value]="option.lideid">
+                    {{option.lidenombres}}
                   </mat-option>
                 </mat-autocomplete>
               </mat-form-field>

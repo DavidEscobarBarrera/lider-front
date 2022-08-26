@@ -1,17 +1,17 @@
-export interface UltimoSeguimiento {
+export interface UltimoSeguimientoResponse {
   status: number;
-  data: Data;
+  data: UltimoSeguimiento;
 }
 
-export interface Data {
-  tale_id: number;
-  segu_id: number;
-  reco_habilidadblanda: string;
-  reco_habilidadtecnica: string;
-  opme_habilidadblanda: string;
-  opme_habilidadtecnica: string;
+export interface UltimoSeguimiento {
+  talid: number;
+  seguid: number;
+  rechabbladn: string;
+  rechabtecni: string;
+  opmhabbland: string;
+  opmhabtecni: string;
   competencias: Competencias;
-  segu_fecha: string;
+  segufecha: string;
 }
 
 export interface Competencias {

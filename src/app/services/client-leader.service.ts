@@ -33,7 +33,7 @@ export class ClientLeaderService {
   getClientLeaderInfo(id: string) {
     return this.http.get<ClientLeaderInfoResponse>(`http://localhost:3005/v1/getoneleaderclientbyid/${id}`)
       .pipe(map(value => ({
-        name: value.data[0].nombre
+        name: value.data[0].lidenombres
       })))
   }
 }

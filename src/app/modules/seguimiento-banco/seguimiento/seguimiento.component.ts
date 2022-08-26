@@ -28,7 +28,7 @@ export class SeguimientoComponent implements OnInit {
 
   ngOnInit() {
     try {
-      this.inClientId = this.setiLeaderService.userData.lise_id;
+      this.inClientId = this.setiLeaderService.userData.liseid;
       this.filteredOptions = this.myControl.valueChanges
         .pipe(
           startWith(''),
@@ -47,23 +47,23 @@ export class SeguimientoComponent implements OnInit {
   }
 
   displayFn(user: ClientLeader): string {
-    return user && user.nombre ? user.nombre : '';
+    return user && user.lidenombres ? user.lidenombres : '';
   }
 
   displayFn2(user: TalentForSearchBar):string {
-    return user && user.nombre ? user.nombre : '';
+    return user && user.talnombres ? user.talnombres : '';
   }
 
   filter(name: string): Observable<ClientLeader[]> {
     const filterValue = name.toString().toLowerCase();
     return this.clientLeaderService.getClientLeaders(this.inClientId.toString())
-      .pipe(map(response => response.filter(option => option.nombre.toLowerCase().includes(filterValue))));
+      .pipe(map(response => response.filter(option => option.lidenombres.toLowerCase().includes(filterValue))));
   }
 
   filter2(name: string): Observable<TalentForSearchBar[]> {
     const filterValue = name.toString().toLowerCase();
     return this.clientLeaderService.getTalentsForSearchBar(this.inClientId.toString())
-      .pipe(map(response => response.filter(option => option.nombre.toLowerCase().includes(filterValue))))
+      .pipe(map(response => response.filter(option => option.talnombres.toLowerCase().includes(filterValue))))
   }
 
   selectLeader(value: any) {

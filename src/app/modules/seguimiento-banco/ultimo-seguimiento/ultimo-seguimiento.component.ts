@@ -70,27 +70,29 @@ export class UltimoSeguimientoComponent implements OnInit {
 
     this.barChartData.datasets[0].data = await lastValueFrom(
       this.data
-        .pipe(map(value => Object.values(value.competencias)))
+        .pipe(
+          map(value => Object.values(value.competencias))
+        )
     )
 
     this.form = this.fb.group({
       actualizado: [false],
       reconocimientos: this.fb.group({
         actualizado: [false],
-        reco_habilidadblanda: [{value: '', disabled: true}],
-        reco_habilidadtecnica: [{value: '', disabled: true}],
+        rechabbladn: [{value: '', disabled: true}],
+        rechabtecni: [{value: '', disabled: true}],
         envio: this.fb.group({
-          reco_habilidadblanda: [{value: ''}],
-          reco_habilidadtecnica: [{value: ''}]
+          rechabbladn: [{value: ''}],
+          rechabtecni: [{value: ''}]
         })
       }),
       opcionMejora: this.fb.group({
         actualizado: [false],
-        opme_habilidadblanda: [{value: '', disabled: true}],
-        opme_habilidadtecnica: [{value: '', disabled: true}],
+        opmhabbland: [{value: '', disabled: true}],
+        opmhabtecni: [{value: '', disabled: true}],
         envio: this.fb.group({
-          opme_habilidadblanda: [{value: ''}],
-          opme_habilidadtecnica: [{value: ''}]
+          opmhabbland: [{value: ''}],
+          opmhabtecni: [{value: ''}]
         })
       })
     })
@@ -146,13 +148,13 @@ export class UltimoSeguimientoComponent implements OnInit {
       this.form.get('opcionMejora')?.disable()
     }
     const idSeguimiento: UpdateSeguimiento = {
-      rechb: this.form.value?.reconocimientos?.envio?.reco_habilidadblanda,
-      recht: this.form.value?.reconocimientos?.envio?.reco_habilidadtecnica,
-      opmhb: this.form.value?.opcionMejora?.envio?.opme_habilidadblanda,
-      opmht: this.form.value?.opcionMejora?.envio?.opme_habilidadtecnica
+      rechb: this.form.value?.reconocimientos?.envio?.rechabbladn,
+      recht: this.form.value?.reconocimientos?.envio?.rechabtecni,
+      opmhb: this.form.value?.opcionMejora?.envio?.opmhabbland,
+      opmht: this.form.value?.opcionMejora?.envio?.opmhabtecni
     }
     const id = this.segu_id;
-    this.seguimientoTalentoService.UpdateEvaluation(id, idSeguimiento)
+    this.seguimientoTalentoService.updateEvaluation(id, idSeguimiento)
       .subscribe({
           next: () => this.success = true,
           complete: () => setTimeout(() => this.location.back(), 2500)

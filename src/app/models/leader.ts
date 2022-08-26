@@ -4,10 +4,11 @@ export interface LeaderResponse {
 }
 export interface Leader {
   nombre: string;
-  lise_cargo: string;
-  pusua_id: number;
-  lise_id: number;
-  clie_nombre: string;
+  liscargo: string;
+  usuaid: number;
+  liseid: number;
+  clinombre: string;
+  cambioContrasena: boolean;
 }
 
 export interface ClientLeaderResponse {
@@ -16,8 +17,8 @@ export interface ClientLeaderResponse {
 }
 
 export interface ClientLeader {
-  nombre: string;
-  plide_id: number;
+  lidenombres: string;
+  lideid: number;
 }
 
 export interface TalentResponse {
@@ -26,23 +27,26 @@ export interface TalentResponse {
 }
 
 export interface Talent {
-  tale_id: number;
-  nombre: string;
-  tale_documentoidentidad: string;
-  comp_tiposatisfaccion?: null;
-  comp_calificaciondesempeno?: null;
-  segu_fecha?: null;
-  lider: string;
+  talid: number;
+  talnombres: string;
+  taldocumid: string;
+  comptipsat?: null;
+  comcaldese?: null;
+  segufecha?: null;
+  lidenombre: string;
 }
 
 export interface ClientLeaderInfoResponse {
   status: number;
-  data: DataEntity[];
+  data: ClientLeaderInfo[];
 }
 
-export interface DataEntity {
-  nombre: string;
-  plide_id: number;
+export interface ClientLeaderInfo {
+  lidenombres: string;
+  evc: string;
+  cargo: string;
+  lideid: number;
+  clieid: number;
 }
 
 export interface TalentForSearchBarResponse {
@@ -51,8 +55,8 @@ export interface TalentForSearchBarResponse {
 }
 
 export interface TalentForSearchBar {
-  nombre: string;
-  pusua_id: number;
+  talnombres: string;
+  talid: number;
 }
 
 export interface TalentInfoResponse {
@@ -61,9 +65,9 @@ export interface TalentInfoResponse {
 }
 
 export interface TalentInfo {
-  tale_id: number;
-  tale_cargo: string;
-  tale_documentoidentidad: string;
-  nombre: string;
-  lider: string;
+  talid: number;
+  talcargo: string;
+  taldocumid: string;
+  talnombres: string;
+  lidenombre: string;
 }
